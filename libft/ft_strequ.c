@@ -1,23 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ps_ss.c                                            :+:      :+:    :+:   */
+/*   ft_strequ.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rhadiats <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/05/31 18:27:33 by rhadiats          #+#    #+#             */
-/*   Updated: 2017/05/31 18:27:35 by rhadiats         ###   ########.fr       */
+/*   Created: 2016/12/12 18:58:57 by rhadiats          #+#    #+#             */
+/*   Updated: 2016/12/29 15:30:23 by rhadiats         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/checker.h"
-#include "../include/structure.h"
-#include "../include/push_swap.h"
+#include "libft.h"
 
-void	ps_ss(t_info_list *info, int print)
+int		ft_strequ(char const *s1, char const *s2)
 {
-	ps_sa(info, print);
-	ps_sb(info, print);
-	if (print)
-		write(1, "ss\n", 3);
+	if (s1 && s2)
+	{
+		while (*s1 || *s2)
+		{
+			if (*s1++ != *s2++)
+				return (0);
+		}
+	}
+	return (1);
 }

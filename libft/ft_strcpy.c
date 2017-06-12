@@ -1,23 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ps_ss.c                                            :+:      :+:    :+:   */
+/*   ft_strcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rhadiats <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/05/31 18:27:33 by rhadiats          #+#    #+#             */
-/*   Updated: 2017/05/31 18:27:35 by rhadiats         ###   ########.fr       */
+/*   Created: 2016/11/30 15:43:29 by rhadiats          #+#    #+#             */
+/*   Updated: 2016/12/29 15:28:21 by rhadiats         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/checker.h"
-#include "../include/structure.h"
-#include "../include/push_swap.h"
+#include "libft.h"
 
-void	ps_ss(t_info_list *info, int print)
+char	*ft_strcpy(char *dest, const char *src)
 {
-	ps_sa(info, print);
-	ps_sb(info, print);
-	if (print)
-		write(1, "ss\n", 3);
+	size_t	i;
+
+	i = 0;
+	while (src[i] != '\0')
+	{
+		dest[i] = src[i];
+		i++;
+	}
+	dest[i] = '\0';
+	return (dest);
 }

@@ -1,15 +1,32 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ps_sa.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rhadiats <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/05/31 18:10:36 by rhadiats          #+#    #+#             */
+/*   Updated: 2017/05/31 18:10:39 by rhadiats         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/checker.h"
 #include "../include/structure.h"
+#include "../include/push_swap.h"
 
-void	ps_sa(t_stack *stack, int n)
+void	ps_sa(t_info_list *info, int print)
 {
-	int		tmp;
+	int			tmp;
 
-	tmp = 0;
-	if (n > 1 && stack->a)
+	if (info->a != NULL)
 	{
-		tmp = stack->a[0];
-		stack->a[0] = stack->a[1];
-		stack->a[1] = tmp;
+		if (info->a->next)
+		{
+			tmp = info->a->data;
+			info->a->data = info->a->next->data;
+			info->a->next->data = tmp;
+			if (print)
+				write(1, "sa\n", 3);
+		}
 	}
 }

@@ -1,23 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ps_ss.c                                            :+:      :+:    :+:   */
+/*   take_elem.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rhadiats <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/05/31 18:27:33 by rhadiats          #+#    #+#             */
-/*   Updated: 2017/05/31 18:27:35 by rhadiats         ###   ########.fr       */
+/*   Created: 2017/06/11 15:46:57 by rhadiats          #+#    #+#             */
+/*   Updated: 2017/06/11 15:46:59 by rhadiats         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/checker.h"
 #include "../include/structure.h"
+#include "../include/checker.h"
 #include "../include/push_swap.h"
 
-void	ps_ss(t_info_list *info, int print)
+intmax_t	take_elem(t_stack *stack, int n)
 {
-	ps_sa(info, print);
-	ps_sb(info, print);
-	if (print)
-		write(1, "ss\n", 3);
+	int				i;
+
+	i = 0;
+	while (stack && i < n)
+	{
+		stack = stack->next;
+		i++;
+	}
+	return (stack->data);
 }

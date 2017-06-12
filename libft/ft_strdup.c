@@ -1,23 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ps_ss.c                                            :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rhadiats <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/05/31 18:27:33 by rhadiats          #+#    #+#             */
-/*   Updated: 2017/05/31 18:27:35 by rhadiats         ###   ########.fr       */
+/*   Created: 2016/11/30 16:01:14 by rhadiats          #+#    #+#             */
+/*   Updated: 2016/12/29 15:29:35 by rhadiats         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/checker.h"
-#include "../include/structure.h"
-#include "../include/push_swap.h"
+#include "libft.h"
 
-void	ps_ss(t_info_list *info, int print)
+char	*ft_strdup(const char *str)
 {
-	ps_sa(info, print);
-	ps_sb(info, print);
-	if (print)
-		write(1, "ss\n", 3);
+	size_t	i;
+	char	*string;
+
+	i = 0;
+	while (str[i] != '\0')
+		i++;
+	string = (char *)malloc(sizeof(*str) * i + 1);
+	if (string == NULL)
+		return (NULL);
+	i = 0;
+	while (str[i] != '\0')
+	{
+		string[i] = str[i];
+		i++;
+	}
+	string[i] = '\0';
+	return (string);
 }

@@ -1,23 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ps_ss.c                                            :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rhadiats <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/05/31 18:27:33 by rhadiats          #+#    #+#             */
-/*   Updated: 2017/05/31 18:27:35 by rhadiats         ###   ########.fr       */
+/*   Created: 2016/12/12 19:30:35 by rhadiats          #+#    #+#             */
+/*   Updated: 2016/12/29 15:19:30 by rhadiats         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/checker.h"
-#include "../include/structure.h"
-#include "../include/push_swap.h"
+#include "libft.h"
 
-void	ps_ss(t_info_list *info, int print)
+void	ft_putnbr_fd(int n, int fd)
 {
-	ps_sa(info, print);
-	ps_sb(info, print);
-	if (print)
-		write(1, "ss\n", 3);
+	long int	nb;
+
+	nb = (long int)n;
+	if (nb < 0)
+	{
+		ft_putchar_fd('-', fd);
+		nb *= -1;
+	}
+	if (nb >= 10)
+	{
+		ft_putnbr_fd(nb / 10, fd);
+		ft_putnbr_fd(nb % 10, fd);
+	}
+	else
+		ft_putchar_fd(nb + '0', fd);
 }

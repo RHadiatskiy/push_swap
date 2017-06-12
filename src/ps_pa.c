@@ -1,22 +1,36 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ps_pa.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rhadiats <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/05/31 18:26:39 by rhadiats          #+#    #+#             */
+/*   Updated: 2017/05/31 18:26:40 by rhadiats         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/checker.h"
 #include "../include/structure.h"
+#include "../include/push_swap.h"
 
-void	ps_pa(t_stack *stack, int n)
+void	ps_pa(t_info_list *info, int print)
 {
-	int		tmp;
-	int		i;
-	int		*arr;
+	t_stack		*tmp;
 
-	tmp = 0;
-	i = 0;
-	if (n > 1 && stack->a && stack->b)
+	if (info->b != NULL)
 	{
-		if (!(arr = (int *)malloc(sizeof(int) * n - 1)))
-			return (NULL);
-		while (stack->b[i])
-			i++;
-		tmp = stack->a[0];
-		stack->a[0] = stack->a[1];
-		stack->a[1] = tmp;
+		tmp = info->b;
+		if (info->b->next != NULL)
+			info->b = info->b->next;
+		else
+			info->b = NULL;
+		if (info->a != NULL)
+			tmp->next = info->a;
+		else
+			tmp->next = NULL;
+		info->a = tmp;
+		if (print)
+			write(1, "pa\n", 3);
 	}
 }

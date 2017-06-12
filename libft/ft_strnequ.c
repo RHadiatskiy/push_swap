@@ -1,23 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ps_ss.c                                            :+:      :+:    :+:   */
+/*   ft_strnequ.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rhadiats <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/05/31 18:27:33 by rhadiats          #+#    #+#             */
-/*   Updated: 2017/05/31 18:27:35 by rhadiats         ###   ########.fr       */
+/*   Created: 2016/12/12 19:11:34 by rhadiats          #+#    #+#             */
+/*   Updated: 2016/12/29 16:28:02 by rhadiats         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/checker.h"
-#include "../include/structure.h"
-#include "../include/push_swap.h"
+#include "libft.h"
 
-void	ps_ss(t_info_list *info, int print)
+int		ft_strnequ(char const *s1, char const *s2, size_t n)
 {
-	ps_sa(info, print);
-	ps_sb(info, print);
-	if (print)
-		write(1, "ss\n", 3);
+	if (s1 && s2)
+	{
+		while (n--)
+		{
+			if (*s1++ != *s2++)
+				return (0);
+		}
+	}
+	return (1);
 }

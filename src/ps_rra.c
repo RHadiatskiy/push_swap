@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ps_ss.c                                            :+:      :+:    :+:   */
+/*   ps_rra.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rhadiats <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/05/31 18:27:33 by rhadiats          #+#    #+#             */
-/*   Updated: 2017/05/31 18:27:35 by rhadiats         ###   ########.fr       */
+/*   Created: 2017/06/01 19:13:48 by rhadiats          #+#    #+#             */
+/*   Updated: 2017/06/01 19:13:50 by rhadiats         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,24 @@
 #include "../include/structure.h"
 #include "../include/push_swap.h"
 
-void	ps_ss(t_info_list *info, int print)
+void			ps_rra(t_info_list *info, int print)
 {
-	ps_sa(info, print);
-	ps_sb(info, print);
-	if (print)
-		write(1, "ss\n", 3);
+	t_stack		*tmp;
+	t_stack		*last;
+
+	last = info->a;
+	if (info->a != NULL)
+	{
+		if (info->a->next != NULL)
+		{
+			while (last->next->next)
+				last = last->next;
+			tmp = last->next;
+			last->next = NULL;
+			tmp->next = info->a;
+			info->a = tmp;
+		}
+		if (print)
+			write(1, "rra\n", 4);
+	}
 }

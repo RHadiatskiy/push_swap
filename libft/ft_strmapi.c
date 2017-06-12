@@ -1,23 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ps_ss.c                                            :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rhadiats <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/05/31 18:27:33 by rhadiats          #+#    #+#             */
-/*   Updated: 2017/05/31 18:27:35 by rhadiats         ###   ########.fr       */
+/*   Created: 2016/12/12 18:41:12 by rhadiats          #+#    #+#             */
+/*   Updated: 2016/12/29 15:38:28 by rhadiats         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/checker.h"
-#include "../include/structure.h"
-#include "../include/push_swap.h"
+#include "libft.h"
 
-void	ps_ss(t_info_list *info, int print)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	ps_sa(info, print);
-	ps_sb(info, print);
-	if (print)
-		write(1, "ss\n", 3);
+	char	*dst;
+	char	*src;
+	size_t	i;
+
+	i = 0;
+	if (s && f)
+	{
+		src = (char *)malloc(sizeof(char) * ft_strlen(s) + 1);
+		dst = src;
+		if (src)
+		{
+			while (s[i])
+			{
+				src[i] = f(i, s[i]);
+				i++;
+			}
+			src[i] = '\0';
+			return (dst);
+		}
+	}
+	return (0);
 }

@@ -1,23 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ps_ss.c                                            :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rhadiats <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/05/31 18:27:33 by rhadiats          #+#    #+#             */
-/*   Updated: 2017/05/31 18:27:35 by rhadiats         ###   ########.fr       */
+/*   Created: 2016/12/02 12:25:24 by rhadiats          #+#    #+#             */
+/*   Updated: 2016/12/29 15:09:31 by rhadiats         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/checker.h"
-#include "../include/structure.h"
-#include "../include/push_swap.h"
+#include "libft.h"
 
-void	ps_ss(t_info_list *info, int print)
+int		ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	ps_sa(info, print);
-	ps_sb(info, print);
-	if (print)
-		write(1, "ss\n", 3);
+	size_t			i;
+	unsigned char	*ch1;
+	unsigned char	*ch2;
+
+	ch1 = (unsigned char *)s1;
+	ch2 = (unsigned char *)s2;
+	i = 0;
+	while (n--)
+	{
+		if (ch1[i] == ch2[i])
+			i++;
+		else
+			return (ch1[i] - ch2[i]);
+	}
+	return (0);
 }
