@@ -85,6 +85,7 @@ void		print_stack_list(t_info_list *info)
 {
 	t_stack		*a_temp;
 	t_stack		*b_temp;
+
 	printf("\n%sSTACK A:%s\n", WHITE, RESET);
 	if (info->a)
 	{

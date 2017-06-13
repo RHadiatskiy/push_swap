@@ -23,6 +23,10 @@
 # define WHITE		"\033[1;37m"
 # define GREEN		"\033[1;32m"
 
+/*
+** ----------------------------
+*/
+
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>

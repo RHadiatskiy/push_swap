@@ -182,6 +182,7 @@ void		reverse_recursion_stack_b(t_info_list *info, t_size_list *size_list)
 		sort_by_pivot_stack_a(info, size_list_next);
 		sort_by_pivot_stack_b(info, size_list_next);
 	}
+	free(size_list_next);
 }
 
 void		sort_by_pivot_stack_b(t_info_list *info, t_size_list *size_list)
@@ -219,4 +220,5 @@ void		sort_by_pivot_stack_b(t_info_list *info, t_size_list *size_list)
 		sort_by_pivot_stack_a(info, size_list_next);
 		reverse_recursion_stack_b(info, size_list_next);
 	}
+	free(size_list_next);
 }
