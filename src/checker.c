@@ -53,30 +53,53 @@ int			parse_and_fill_list(int ac, char **av, int *i, t_info_list *info)
 
 void		delete_info_list(t_info_list *info)
 {
-	t_stack		*a_temp;
-	t_stack		*b_temp;
+	t_stack		*temp;
 
 	if (info->a)
 	{
 		while (info->a)
 		{
-			a_temp = info->a;
+			temp = info->a;
 			info->a = info->a->next;
-			free(a_temp);
+			free(temp);
+			temp = NULL;
 		}
 	}
 	if (info->b)
 	{
 		while (info->b)
 		{
-			b_temp = info->b;
+			temp = info->b;
 			info->b = info->b->next;
-			free(b_temp);
+			free(temp);
+			temp = NULL;
 		}
 	}
 	free(info->a);
 	free(info->b);
 	free(info);
+}
+
+int			reading_command(char *line, t_info_list *info)
+{
+	while (get_next_line(0, &line))
+	{
+		if (!check_command(line))
+			return (0);
+		if (info->flag_v == 0)
+			choose_command(info, 0, line);
+		else
+		{
+			write(1, "\n", 1);
+			choose_command(info, 1, line);
+			print_stack_list(info);
+			printf("%sSize Stack A :%s \t%s%d%s\n", WHITE, RESET, GREEN, \
+				ft_list_size(info->a), RESET);
+			printf("%sSize Stack B :%s \t%s%d%s\n", WHITE, RESET, RED, \
+				ft_list_size(info->b), RESET);
+		}
+	}
+	return (1);
 }
 
 int			main(int argc, char **argv)
@@ -86,21 +109,22 @@ int			main(int argc, char **argv)
 	char			*line;
 
 	i = 1;
+	line = NULL;
 	if (!argv[1])
 		return (errors_report(1));
 	info = initial_info_list();
 	if ((parse_and_fill_list(argc, argv, &i, info)) == 1)
 		return (0);
-	while (get_next_line(0, &line))
-	{
-		choose_command(info, 0, line);
-		if (!check_command(line))
-			return (errors_report(1));
-		if (info->flag_v == 1)
-			print_stack_list(info);
-	}
+	if (!reading_command(line, info))
+		return (errors_report(1));
 	if (info->flag_c == 1)
+	{
 		print_stack_list(info);
+		printf("%sSize Stack A :%s \t%s%d%s\n", WHITE, RESET, GREEN, \
+			ft_list_size(info->a), RESET);
+		printf("%sSize Stack B :%s \t%s%d%s\n", WHITE, RESET, RED, \
+			ft_list_size(info->b), RESET);
+	}
 	ps_is_sort(info);
 	delete_info_list(info);
 	return (0);

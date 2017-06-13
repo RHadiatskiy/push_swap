@@ -13,6 +13,16 @@
 #ifndef CHECKER_H
 # define CHECKER_H
 
+/*
+** Colorize an output of printf
+*/
+
+# define RESET		"\033[0m"
+# define RED		"\033[1;31m"
+# define YELLOW		"\033[1;33m"
+# define WHITE		"\033[1;37m"
+# define GREEN		"\033[1;32m"
+
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
@@ -23,6 +33,7 @@
 # include "../libft/libft.h"
 
 int			ft_atoi(const char *str);
+int			ft_list_size(t_stack *stack);
 int			*ft_arrcpy(int *src, unsigned long n);
 int			ps_is_sort(t_info_list *info);
 void		ps_pa(t_info_list *info, int print);
