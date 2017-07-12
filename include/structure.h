@@ -14,6 +14,7 @@
 # define STRUCTURE_H
 
 # include <stdint.h>
+# include <stdlib.h>
 
 typedef struct		s_stack
 {
@@ -28,12 +29,15 @@ typedef struct		s_info_list
 	t_stack			*b;
 	unsigned int	flag_v : 1;
 	unsigned int	flag_c : 1;
+	size_t			i;
 }					t_info_list;
 
 typedef struct		s_size_list
 {
 	long			a_size;
 	long			b_size;
+	int				position_a;
+	int				position_b;
 }					t_size_list;
 
 #endif

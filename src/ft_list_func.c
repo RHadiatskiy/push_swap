@@ -86,26 +86,26 @@ void		print_stack_list(t_info_list *info)
 	t_stack		*a_temp;
 	t_stack		*b_temp;
 
-	printf("\n%sSTACK A:%s\n", WHITE, RESET);
+	dprintf(2, "\n%sSTACK A:%s\n", WHITE, RESET);
 	if (info->a)
 	{
 		a_temp = info->a;
 		while (a_temp->next)
 		{
-			printf("%s%jd%s ", GREEN, a_temp->data, RESET);
+			dprintf(2, "%s%jd%s ", GREEN, a_temp->data, RESET);
 			a_temp = a_temp->next;
 		}
-		printf("%s%jd%s\n", GREEN, a_temp->data, RESET);
+		dprintf(2, "%s%jd%s\n", GREEN, a_temp->data, RESET);
 	}
-	printf("%sSTACK B:%s\n", WHITE, RESET);
+	dprintf(2, "%sSTACK B:%s\n", WHITE, RESET);
 	if (info->b)
 	{
 		b_temp = info->b;
 		while (b_temp->next)
 		{
-			printf("%s%jd%s ", RED, b_temp->data, RESET);
+			dprintf(2, "%s%jd%s ", RED, b_temp->data, RESET);
 			b_temp = b_temp->next;
 		}
-		printf("%s%jd%s\n", RED, b_temp->data, RESET);
+		dprintf(2, "%s%jd%s\n", RED, b_temp->data, RESET);
 	}
 }

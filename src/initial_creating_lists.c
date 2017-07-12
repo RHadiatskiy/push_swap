@@ -34,6 +34,8 @@ t_size_list		*initial_size_list(void)
 		return (NULL);
 	new_list->a_size = 0;
 	new_list->b_size = 0;
+	new_list->position_a = 0;
+	new_list->position_b = 0;
 	return (new_list);
 }
 
@@ -47,5 +49,6 @@ t_info_list		*initial_info_list(void)
 	info->b = NULL;
 	info->flag_v = 0;
 	info->flag_c = 0;
+	info->i = 0;
 	return (info);
 }

@@ -87,11 +87,15 @@ int			reading_command(char *line, t_info_list *info)
 		if (!check_command(line))
 			return (0);
 		if (info->flag_v == 0)
+		{
 			choose_command(info, 0, line);
+			info->i++;
+		}
 		else
 		{
 			write(1, "\n", 1);
 			choose_command(info, 1, line);
+			info->i++;
 			print_stack_list(info);
 			printf("%sSize Stack A :%s \t%s%d%s\n", WHITE, RESET, GREEN, \
 				ft_list_size(info->a), RESET);
@@ -99,6 +103,8 @@ int			reading_command(char *line, t_info_list *info)
 				ft_list_size(info->b), RESET);
 		}
 	}
+	if (info->flag_v == 1)
+		printf("\n%sTOTAL :%s \t%s%jd%s\n", WHITE, RESET, RED, info->i, RESET);
 	return (1);
 }
 
@@ -124,6 +130,7 @@ int			main(int argc, char **argv)
 			ft_list_size(info->a), RESET);
 		printf("%sSize Stack B :%s \t%s%d%s\n", WHITE, RESET, RED, \
 			ft_list_size(info->b), RESET);
+		printf("\n%sTOTAL :%s \t%s%jd%s\n", WHITE, RESET, RED, info->i, RESET);
 	}
 	ps_is_sort(info);
 	delete_info_list(info);
