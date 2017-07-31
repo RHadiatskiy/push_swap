@@ -21,9 +21,10 @@
 # include "../libft/libft.h"
 
 int			ft_list_size(t_stack *stack);
+t_stack		*ft_lstncpy(t_stack *stack, long start, long n);
 intmax_t	take_elem(t_stack *stack, int n);
-t_stack		*ft_lstcpy(t_stack *stack);
-t_stack		*ft_lstncpy(t_stack *stack, long n);
+// t_stack		*ft_lstcpy(t_stack *stack);
+// t_stack		*ft_lstncpy(t_stack *stack, long n);
 t_stack		*ft_sort_list(t_stack *stack);
 int			swap_is_sort_a(t_stack *stack, int n);
 int			swap_is_sort_b(t_stack *stack, int n);

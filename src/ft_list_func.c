@@ -64,19 +64,42 @@ t_stack		*ft_lstcpy(t_stack *stack)
 	return (tmp);
 }
 
-t_stack		*ft_lstncpy(t_stack *stack, long n)
+// t_stack		*ft_lstncpy(t_stack *stack, long n)
+// {
+// 	t_stack			*tmp;
+// 	unsigned int	i;
+
+// 	i = 0;
+// 	if (!stack || n <= 0)
+// 		return (NULL);
+// 	tmp = create_stack_list();
+// 	while (stack && i++ < n)
+// 	{
+// 		stack_list_added(tmp, stack->data);
+// 		stack = stack->next;
+// 	}
+// 	return (tmp);
+// }
+
+t_stack		*ft_lstncpy(t_stack *stack, long start, long n)
 {
 	t_stack			*tmp;
 	unsigned int	i;
 
 	i = 0;
-	if (!stack || n <= 0)
+	if (!stack || n <= 0 || start > ft_list_size(stack))
 		return (NULL);
-	tmp = create_stack_list();
-	while (stack && i++ < n)
-	{
-		stack_list_added(tmp, stack->data);
+	while (stack && i++ < start)
 		stack = stack->next;
+	if (stack)
+	{
+		tmp = create_stack_list();
+		i = 0;
+		while (stack && i++ < n)
+		{
+			stack_list_added(tmp, stack->data);
+			stack = stack->next;
+		}
 	}
 	return (tmp);
 }

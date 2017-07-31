@@ -129,7 +129,7 @@ void		sorting_stack_b(t_info_list *info, t_size_list *size_list_next, int pivot,
 	{
 		if (info->a->data - 1 == info->b->data && size_list_next->a_size == 0)
 			ps_pa(info, 1);
-		else if ((info->b->data) > pivot)
+		else if ((info->b->data) >= pivot)
 		{
 			ps_pa(info, 1);
 			size_list_next->a_size++;
@@ -164,7 +164,6 @@ void		reverse_recursion_stack_b(t_info_list *info, t_size_list *size_list)
 {
 	intmax_t		pivot;
 	int				size;
-	int				i;
 	t_size_list 	*size_list_next;
 	
 	// dprintf(2, "\n\n%sREVERSE stack_b : %s\n", RED, RESET);
@@ -172,7 +171,6 @@ void		reverse_recursion_stack_b(t_info_list *info, t_size_list *size_list)
 	// dprintf(2, "SIZE A: %ld\n", size_list->a_size);
 	// dprintf(2, "SIZE B: %ld\n", size_list->b_size);
 
-	i = 0;
 	size_list_next = initial_size_list();
 	if ((size = size_list->b_size) <= 3)
 	{
@@ -182,7 +180,7 @@ void		reverse_recursion_stack_b(t_info_list *info, t_size_list *size_list)
 	}
 	else
 	{
-		pivot = take_elem(ft_sort_list(ft_lstncpy(info->b, size)), size / 2);
+		pivot = take_elem(ft_sort_list(ft_lstncpy(info->b, (ft_list_size(info->b) - size), size)), size / 2);
 
 		// dprintf(2, "%sPIVOT : %jd%s\n",RED, pivot, RESET);
 
@@ -197,8 +195,7 @@ void		reverse_recursion_stack_b(t_info_list *info, t_size_list *size_list)
 			{
 				ps_pa(info, 1);
 			}
-			else 
-				if ((info->b->data) > pivot)
+			else if ((info->b->data) >= pivot)
 			{
 				ps_pa(info, 1);
 				size_list_next->a_size++;
@@ -232,7 +229,6 @@ void		sort_by_pivot_stack_b(t_info_list *info, t_size_list *size_list)
 {
 	intmax_t		pivot;
 	int				size;
-	int				i;
 	t_size_list 	*size_list_next;
 	
 	// dprintf(2, "\n\n%sSTACK_B : %s\n", RED, RESET);
@@ -240,7 +236,6 @@ void		sort_by_pivot_stack_b(t_info_list *info, t_size_list *size_list)
 	// dprintf(2, "SIZE A: %ld\n", size_list->a_size);
 	// dprintf(2, "SIZE B: %ld\n", size_list->b_size);
 
-	i = 0;
 	size_list_next = initial_size_list();
 	if ((size = size_list->b_size) <= 3)
 	{
@@ -250,7 +245,7 @@ void		sort_by_pivot_stack_b(t_info_list *info, t_size_list *size_list)
 	}
 	else
 	{
-		pivot = take_elem(ft_sort_list(ft_lstncpy(info->b, size)), size / 2);
+		pivot = take_elem(ft_sort_list(ft_lstncpy(info->b, 0, size)), size / 2);
 
 		// dprintf(2, "%sPIVOT : %jd%s\n",RED, pivot, RESET);
 
