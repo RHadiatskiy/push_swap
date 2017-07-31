@@ -87,6 +87,7 @@ t_stack		*ft_lstncpy(t_stack *stack, long start, long n)
 	unsigned int	i;
 
 	i = 0;
+	tmp = NULL;
 	if (!stack || n <= 0 || start > ft_list_size(stack))
 		return (NULL);
 	while (stack && i++ < start)

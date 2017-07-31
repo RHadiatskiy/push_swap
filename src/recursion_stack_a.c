@@ -146,10 +146,10 @@ void		reverse_recursion_stack_a(t_info_list *info, t_size_list *size_list)
 	int				size;
 	t_size_list 	*size_list_next;
 	
-	// dprintf(2, "\n\n%sREVERSE stack_a : %s\n", GREEN, RESET);
-	// print_stack_list(info);
-	// dprintf(2, "SIZE A: %ld\n", size_list->a_size);
-	// dprintf(2, "SIZE B: %ld\n", size_list->b_size);
+	dprintf(2, "\n\n%sREVERSE stack_a : %s\n", GREEN, RESET);
+	print_stack_list(info);
+	dprintf(2, "SIZE A: %ld\n", size_list->a_size);
+	dprintf(2, "SIZE B: %ld\n", size_list->b_size);
 
 	size_list_next = initial_size_list();
 	if ((size = size_list->a_size) <= 3)
@@ -157,16 +157,12 @@ void		reverse_recursion_stack_a(t_info_list *info, t_size_list *size_list)
 	else
 	{
 		pivot = take_elem(ft_sort_list(ft_lstncpy(info->a, (ft_list_size(info->a) - size), size)), size / 2);
-		// dprintf(2, "%sPIVOT : %jd%s\n",RED, pivot, RESET);
+		dprintf(2, "%sPIVOT : %jd%s\n",RED, pivot, RESET);
 		// sorting_stack_a(info, size_list_next, pivot, &size);
-
 
 		while (size-- > 0)
 		{
-			ps_rra(info, 1);
-
-			
-
+			ps_rra(info, 1);	
 			if ((info->a->data) <= pivot)
 			{
 				ps_pb(info, 1);
@@ -187,10 +183,10 @@ void		sort_by_pivot_stack_a(t_info_list *info, t_size_list *size_list)
 	int				size;
 	t_size_list 	*size_list_next;
 	
-	// dprintf(2, "\n\n%sstack_a : %s\n", GREEN, RESET);
-	// print_stack_list(info);
-	// dprintf(2, "SIZE A: %ld\n", size_list->a_size);
-	// dprintf(2, "SIZE B: %ld\n", size_list->b_size);	
+	dprintf(2, "\n\n%sstack_a : %s\n", GREEN, RESET);
+	print_stack_list(info);
+	dprintf(2, "SIZE A: %ld\n", size_list->a_size);
+	dprintf(2, "SIZE B: %ld\n", size_list->b_size);	
 
 	size_list_next = initial_size_list();
 	if ((size = size_list->a_size) <= 3)
@@ -198,12 +194,9 @@ void		sort_by_pivot_stack_a(t_info_list *info, t_size_list *size_list)
 	else
 	{
 		pivot = take_elem(ft_sort_list(ft_lstncpy(info->a, 0, size)), size / 2);
-		// dprintf(2, "%sPIVOT : %jd%s\n",RED, pivot, RESET);
-	
-
+		dprintf(2, "%sPIVOT : %jd%s\n",RED, pivot, RESET);
 
 		sorting_stack_a(info, size_list_next, pivot, &size);
-
 
 		// if (ft_list_size(info->a) != 0)
 		// 	while (i++ < size_list_next->a_size)
