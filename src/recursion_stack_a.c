@@ -43,7 +43,7 @@ void		sort_more_three_stack_reverse_a(t_info_list *info, int size)
 	int				i;
 
 	i = 0;
-	while (size > i++)
+	while (size > ++i)
 		ps_rra(info, 1);
 	if (size == 2)
 	{
@@ -125,7 +125,7 @@ void		sort_less_three_stack_reverse_a(t_info_list *info, int size)
 
 void		sorting_stack_a(t_info_list *info, t_size_list *size_list_next, int pivot, int *size)
 {
-	while ((*size)-- > 0)
+	while ((*size)-- > 1)
 	{
 		if ((info->a->data) <= pivot)
 		{
@@ -138,6 +138,14 @@ void		sorting_stack_a(t_info_list *info, t_size_list *size_list_next, int pivot,
 			size_list_next->a_size++;
 		}
 	}
+	if ((info->a->data) <= pivot)
+	{
+		ps_pb(info, 1);
+		ps_rra(info, 1);
+		size_list_next->b_size++;
+	}
+	else
+		size_list_next->a_size++;
 }
 
 void		reverse_recursion_stack_a(t_info_list *info, t_size_list *size_list)
@@ -160,9 +168,8 @@ void		reverse_recursion_stack_a(t_info_list *info, t_size_list *size_list)
 		dprintf(2, "%sPIVOT : %jd%s\n",RED, pivot, RESET);
 		// sorting_stack_a(info, size_list_next, pivot, &size);
 
-		while (size-- > 0)
+		while (size-- > 1)
 		{
-			ps_rra(info, 1);	
 			if ((info->a->data) <= pivot)
 			{
 				ps_pb(info, 1);
@@ -170,7 +177,15 @@ void		reverse_recursion_stack_a(t_info_list *info, t_size_list *size_list)
 			}
 			else
 				size_list_next->a_size++;
+			ps_rra(info, 1);
 		}
+		if ((info->a->data) <= pivot)
+		{
+			ps_pb(info, 1);
+			size_list_next->b_size++;
+		}
+		else
+			size_list_next->a_size++;
 		sort_by_pivot_stack_a(info, size_list_next);
 		sort_by_pivot_stack_b(info, size_list_next);
 	}
