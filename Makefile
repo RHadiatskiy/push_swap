@@ -28,7 +28,8 @@ SRC= ./src/check_command.c ./src/choose_command.c \
 		./src/ps_rrb.c ./src/ps_rrr.c ./src/ps_sa.c \
 		./src/ps_sb.c ./src/ps_ss.c ./src/recursion_stack_a.c \
 		./src/recursion_stack_b.c ./src/sorting_more_three_stack_funcs.c \
-		./src/take_elem.c
+		./src/take_elem.c ./src/sorting_less_three_stack_func.c \
+		./src/sorting_stacks.c
 
 all: $(NAME)
 

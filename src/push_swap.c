@@ -59,7 +59,8 @@ int			main(int argc, char **argv)
 		stack_list_added(info->a, ft_atoi(argv[i++]));
 	}
 	size_list->a_size = ft_list_size(info->a);
-	if (!swap_is_sort_a(info->a, ft_list_size(info->a)) && ft_list_size(info->b) == 0)
+	if (!swap_is_sort_a(info->a, ft_list_size(info->a)) && \
+		ft_list_size(info->b) == 0)
 		sort_by_pivot_stack_a(info, size_list);
 	delete_info_list(info);
 	free(size_list);
