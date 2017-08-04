@@ -129,7 +129,7 @@ void		sorting_stack_b(t_info_list *info, t_size_list *size_list_next, int pivot,
 	{
 		if (info->a->data - 1 == info->b->data && size_list_next->a_size == 0)
 			ps_pa(info, 1);
-		else if ((info->b->data) >= pivot)
+		else if ((info->b->data) > pivot)
 		{
 			ps_pa(info, 1);
 			size_list_next->a_size++;
@@ -140,7 +140,7 @@ void		sorting_stack_b(t_info_list *info, t_size_list *size_list_next, int pivot,
 			size_list_next->b_size++;
 		}
 	}
-	if ((info->b->data) >= pivot)
+	if ((info->b->data) > pivot)
 	{
 		ps_pa(info, 1);
 		ps_rrb(info, 1);
@@ -148,24 +148,6 @@ void		sorting_stack_b(t_info_list *info, t_size_list *size_list_next, int pivot,
 	}
 	else
 		size_list_next->b_size++;
-	// dprintf(2, "\n\n%sstack_b AFTER CYCLE: %s\n", RED, RESET);
-	// if (info->a->data - 1 == info->b->data && size_list_next->a_size == 0)
-	// {
-	// 	// dprintf(2, "\n\n%ssize_list_next->b_size: %ld%s\n", GREEN, size_list_next->b_size, RESET);
-	// 	ps_pa(info, 1);
-	// 	if (size_list_next->b_size > 3)
-	// 		ps_rrb(info, 1);
-	// }
-	// else if ((info->b->data) > pivot)
-	// {
-	// 	ps_pa(info, 1);
-	// 	ps_rrb(info, 1);
-	// 	size_list_next->a_size++;
-	// }
-	// else
-	// {
-	// 	size_list_next->b_size++;
-	// }
 }
 
 void		reverse_recursion_stack_b(t_info_list *info, t_size_list *size_list)
@@ -191,44 +173,31 @@ void		reverse_recursion_stack_b(t_info_list *info, t_size_list *size_list)
 		pivot = take_elem(ft_sort_list(ft_lstncpy(info->b, (ft_list_size(info->b) - size), size)), size / 2);
 
 		dprintf(2, "%sPIVOT : %jd%s\n",RED, pivot, RESET);
-		// sorting_stack_b(info, size_list_next, pivot, &size);
-		// dprintf(2, "SIZE A: %ld\n", size_list->a_size);
-		// dprintf(2, "SIZE B: %ld\n", size_list->b_size);
-		while (size-- > 1)
+		if (size == ft_list_size(info->b))
+			sorting_stack_b(info, size_list_next, pivot, &size);
+		else
 		{
-			if (info->a->data - 1 == info->b->data && size_list_next->a_size == 0)
-				ps_pa(info, 1);
-			else if ((info->b->data) >= pivot)
+			while (size-- > 1)
+			{
+				if (info->a->data - 1 == info->b->data && size_list_next->a_size == 0)
+					ps_pa(info, 1);
+				else if ((info->b->data) > pivot)
+				{
+					ps_pa(info, 1);
+					size_list_next->a_size++;
+				}
+				else
+					size_list_next->b_size++;
+				ps_rrb(info, 1);			
+			}
+			if ((info->b->data) > pivot)
 			{
 				ps_pa(info, 1);
 				size_list_next->a_size++;
 			}
 			else
 				size_list_next->b_size++;
-			ps_rrb(info, 1);			
 		}
-		if ((info->b->data) >= pivot)
-		{
-			ps_pa(info, 1);
-			size_list_next->a_size++;
-		}
-		else
-			size_list_next->b_size++;
-		// dprintf(2, "\n\n%sREVERSE stack_b AFTER CYCLE: %s\n", RED, RESET);
-		// print_stack_list(info);
-		// if (info->a->data - 1 == info->b->data && size_list_next->a_size == 0)
-		// {
-		// 	ps_pa(info, 1);
-		// }
-		// else 
-		// 	if ((info->b->data) > pivot)
-		// {
-		// 	ps_pa(info, 1);
-		// 	size_list_next->a_size++;
-		// }
-		// else
-		// 	size_list_next->b_size++;
-
 		sort_by_pivot_stack_a(info, size_list_next);
 		sort_by_pivot_stack_b(info, size_list_next);
 	}
@@ -260,13 +229,6 @@ void		sort_by_pivot_stack_b(t_info_list *info, t_size_list *size_list)
 		dprintf(2, "%sPIVOT : %jd%s\n",RED, pivot, RESET);
 
 		sorting_stack_b(info, size_list_next, pivot, &size);
-
-		// dprintf(2, "SIZE A: %ld\n", size_list->a_size);
-		// dprintf(2, "SIZE B: %ld\n", size_list->b_size);
-
-		// if (ft_list_size(info->b) != 0)
-		// 	while (i++ < size_list_next->b_size)
-		// 		ps_rrb(info, 1);
 
 		sort_by_pivot_stack_a(info, size_list_next);
 		reverse_recursion_stack_b(info, size_list_next);

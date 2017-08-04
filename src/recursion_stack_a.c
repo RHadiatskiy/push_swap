@@ -127,7 +127,7 @@ void		sorting_stack_a(t_info_list *info, t_size_list *size_list_next, int pivot,
 {
 	while ((*size)-- > 1)
 	{
-		if ((info->a->data) <= pivot)
+		if ((info->a->data) < pivot)
 		{
 			ps_pb(info, 1);
 			size_list_next->b_size++;
@@ -138,7 +138,7 @@ void		sorting_stack_a(t_info_list *info, t_size_list *size_list_next, int pivot,
 			size_list_next->a_size++;
 		}
 	}
-	if ((info->a->data) <= pivot)
+	if ((info->a->data) < pivot)
 	{
 		ps_pb(info, 1);
 		ps_rra(info, 1);
@@ -166,26 +166,30 @@ void		reverse_recursion_stack_a(t_info_list *info, t_size_list *size_list)
 	{
 		pivot = take_elem(ft_sort_list(ft_lstncpy(info->a, (ft_list_size(info->a) - size), size)), size / 2);
 		dprintf(2, "%sPIVOT : %jd%s\n",RED, pivot, RESET);
-		// sorting_stack_a(info, size_list_next, pivot, &size);
 
-		while (size-- > 1)
+		if (size == ft_list_size(info->a))
+			sorting_stack_a(info, size_list_next, pivot, &size);
+		else
 		{
-			if ((info->a->data) <= pivot)
+			while (size-- > 1)
+			{
+				if ((info->a->data) < pivot)
+				{
+					ps_pb(info, 1);
+					size_list_next->b_size++;
+				}
+				else
+					size_list_next->a_size++;
+				ps_rra(info, 1);
+			}
+			if ((info->a->data) < pivot)
 			{
 				ps_pb(info, 1);
 				size_list_next->b_size++;
 			}
 			else
 				size_list_next->a_size++;
-			ps_rra(info, 1);
 		}
-		if ((info->a->data) <= pivot)
-		{
-			ps_pb(info, 1);
-			size_list_next->b_size++;
-		}
-		else
-			size_list_next->a_size++;
 		sort_by_pivot_stack_a(info, size_list_next);
 		sort_by_pivot_stack_b(info, size_list_next);
 	}
@@ -212,10 +216,6 @@ void		sort_by_pivot_stack_a(t_info_list *info, t_size_list *size_list)
 		dprintf(2, "%sPIVOT : %jd%s\n",RED, pivot, RESET);
 
 		sorting_stack_a(info, size_list_next, pivot, &size);
-
-		// if (ft_list_size(info->a) != 0)
-		// 	while (i++ < size_list_next->a_size)
-		// 		ps_rra(info, 1);
 
 		reverse_recursion_stack_a(info, size_list_next);
 		sort_by_pivot_stack_b(info, size_list_next);
