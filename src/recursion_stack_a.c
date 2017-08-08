@@ -38,13 +38,37 @@ void		sort_more_three_stack_a(t_info_list *info, int size)
 	}
 }
 
-void		sort_more_three_stack_reverse_a(t_info_list *info, int size)
+void		check_more_three_stack_a(t_info_list *info, int size)
 {
 	int				i;
 
 	i = 0;
 	while (size > ++i)
+		ps_rra(info, 0);
+	if (info->a->next->data > info->a->data && \
+		info->a->next->data > info->a->next->next->data)
+	{
+		while (--i > 0)
+			ps_ra(info, 0);
 		ps_rra(info, 1);
+		if (info->a->data > info->a->next->data)
+			ps_sa(info, 1);
+		ps_rra(info, 1);
+		if (info->a->data > info->a->next->data)
+			ps_sa(info, 1);
+	}
+	else
+	{
+		while (--i > 0)
+			ps_ra(info, 0);
+		while (size > ++i)
+			ps_rra(info, 1);
+	}
+}
+
+void		sort_more_three_stack_reverse_a(t_info_list *info, int size)
+{
+	check_more_three_stack_a(info, size);
 	if (size == 2)
 	{
 		if (info->a->data > info->a->next->data)
@@ -55,9 +79,9 @@ void		sort_more_three_stack_reverse_a(t_info_list *info, int size)
 		if (info->a->data > info->a->next->data && \
 			info->a->data > info->a->next->next->data)
 			sorting_a_one(info);
-		else if ((info->a->next->data > info->a->data) && \
-			(info->a->next->data > info->a->next->next->data))
-			sorting_a_two(info);
+		// else if ((info->a->next->data > info->a->data) && \
+		// 	(info->a->next->data > info->a->next->next->data))
+		// 	sorting_a_two(info);
 		else if (info->a->next->next->data > info->a->data && \
 			info->a->next->next->data > info->a->next->data)
 		{

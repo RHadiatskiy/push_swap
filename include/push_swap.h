@@ -32,11 +32,11 @@ t_size_list	*initial_size_list(void);
 void		sort_less_three_stack_a(t_info_list *info, int size);
 void		sort_less_three_stack_b(t_info_list *info, int size);
 void		sort_less_three_stack_reverse_a(t_info_list *info, int size);
-void		sort_less_three_stack_reverse_b(t_info_list *info, int size);
+void		sort_less_three_stack_reverse_b(t_info_list *info, int *size);
 void		sort_more_three_stack_a(t_info_list *info, int size);
 void		sort_more_three_stack_reverse_a(t_info_list *info, int size);
 void		sort_more_three_stack_b(t_info_list *info, int size);
-void		sort_more_three_stack_reverse_b(t_info_list *info, int size);
+void		sort_more_three_stack_reverse_b(t_info_list *info, int *size);
 void		sort_by_pivot_stack_reverse_a(t_info_list *info, \
 	t_size_list **size_list, int *i, int pivot);
 void		sort_by_pivot_stack_reverse_b(t_info_list *info, \

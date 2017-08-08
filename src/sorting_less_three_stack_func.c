@@ -98,7 +98,7 @@ void		sort_less_three_stack_b(t_info_list *info, int size)
 		sort_more_three_stack_b(info, size);
 }
 
-void		sort_less_three_stack_reverse_b(t_info_list *info, int size)
+void		sort_less_three_stack_reverse_b(t_info_list *info, int *size)
 {
 	if (ft_list_size(info->b) <= 3)
 	{
