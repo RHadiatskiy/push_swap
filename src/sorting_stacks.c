@@ -19,7 +19,7 @@ void		sorting_stack_a(t_info_list *info, t_size_list *size_list_next, \
 {
 	while ((*size)-- > 1)
 	{
-		if ((info->a->data) < pivot)
+		if ((info->a->data) <= pivot)
 		{
 			ps_pb(info, 1);
 			size_list_next->b_size++;
@@ -81,7 +81,7 @@ void		sorting_stack_b(t_info_list *info, t_size_list *size_list_next, \
 			size_list_next->b_size++;
 		}
 	}
-	if ((info->b->data) >= pivot)
+	if ((info->b->data) > pivot)
 	{
 		ps_pa(info, 1);
 		ps_rrb(info, 1);
@@ -98,7 +98,7 @@ void		reverse_sorting_stack_b(t_info_list *info, t_size_list \
 	{
 		if (info->a->data - 1 == info->b->data && size_list_next->a_size == 0)
 			ps_pa(info, 1);
-		else if ((info->b->data) >= pivot)
+		else if ((info->b->data) > pivot)
 		{
 			ps_pa(info, 1);
 			size_list_next->a_size++;
@@ -107,7 +107,7 @@ void		reverse_sorting_stack_b(t_info_list *info, t_size_list \
 			size_list_next->b_size++;
 		ps_rrb(info, 1);
 	}
-	if ((info->b->data) >= pivot)
+	if ((info->b->data) > pivot)
 	{
 		ps_pa(info, 1);
 		size_list_next->a_size++;
