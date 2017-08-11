@@ -14,27 +14,29 @@
 #include "../include/structure.h"
 #include "../include/checker.h"
 
-void		sort_more_three_stack_b(t_info_list *info, int size)
+void		sort_more_three_stack_b(t_info_list *info, int *size)
 {
-	if (size == 2)
+	if ((*size) == 2)
 	{
 		if (info->b->data < info->b->next->data)
 			ps_sb(info, 1);
 	}
-	else if (size == 3)
+	else if ((*size) == 3)
 	{
 		if (info->b->data > info->b->next->data && \
-			info->b->data > info->b->next->next->data && \
-			info->b->next->data < info->b->next->next->data)
-			sorting_b_one(info);
+			info->b->data > info->b->next->next->data)
+		{
+			ps_pa(info, 1);
+			(*size)--;
+			if (info->b->data < info->b->next->data)
+				ps_sb(info, 1);
+		}
 		else if ((info->b->next->next->data > info->b->next->data) && \
 			(info->b->next->next->data > info->b->data))
 			sorting_b_two(info);
 		else if (info->b->next->data > info->b->data && \
 			info->b->next->data > info->b->next->next->data)
 			sorting_b_three(info);
-		else if (info->b->data < info->b->next->data)
-			ps_sb(info, 1);
 	}
 }
 
@@ -61,10 +63,10 @@ void		sort_more_three_stack_reverse_b(t_info_list *info, int *size)
 		info->b->data < info->b->next->next->data && \
 		info->b->next->data > info->b->next->next->data)
 	{
-		ps_rb(info, 0);
-		ps_rb(info, 0);
-		ps_rrb(info, 1);
-		ps_rrb(info, 1);
+		while (--i > 0)
+			ps_rb(info, 0);
+		while ((*size) > ++i)
+			ps_rrb(info, 1);
 		sorting_b_three(info);
 	}
 	else
@@ -151,7 +153,7 @@ void		sort_by_pivot_stack_b(t_info_list *info, t_size_list *size_list)
 	size_list_next = initial_size_list();
 	if ((size = size_list->b_size) <= 3)
 	{
-		sort_less_three_stack_b(info, size);
+		sort_less_three_stack_b(info, &size);
 		while (size-- != 0)
 			ps_pa(info, 1);
 	}

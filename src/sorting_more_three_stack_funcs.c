@@ -43,8 +43,7 @@ void		sorting_a_two(t_info_list *info)
 void		sorting_b_one(t_info_list *info)
 {
 	if (info->b->data > info->b->next->data && \
-		info->b->data > info->b->next->next->data && \
-		info->b->next->data < info->b->next->next->data)
+		info->b->data > info->b->next->next->data)
 	{
 		ps_rb(info, 1);
 		if (info->b->data < info->b->next->data)

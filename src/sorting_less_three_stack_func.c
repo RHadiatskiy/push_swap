@@ -31,11 +31,13 @@ void		sort_less_three_stack_a(t_info_list *info, int size)
 				else if (info->a->data > info->a->next->data)
 					ps_sa(info, 1);
 			}
-			else
+			else if (ft_list_size(info->a) == 2)
 			{
 				if (info->a->data > info->a->next->data)
 					ps_sa(info, 1);
 			}
+			else
+				;
 		}
 	}
 	else
@@ -59,40 +61,60 @@ void		sort_less_three_stack_reverse_a(t_info_list *info, int size)
 				else if (info->a->data > info->a->next->data)
 					ps_sa(info, 1);
 			}
-			else
+			else if (ft_list_size(info->a) == 2)
 			{
 				if (info->a->data > info->a->next->data)
 					ps_sa(info, 1);
 			}
+			else
+				;
 		}
 	}
 	else
 		sort_more_three_stack_reverse_a(info, size);
 }
 
-void		sort_less_three_stack_b(t_info_list *info, int size)
+void		sorting_less_three_elem(t_info_list *info, int *size)
+{
+	if (info->b->data > info->b->next->data && info->b->data > \
+		info->b->next->next->data)
+	{
+		ps_pa(info, 1);
+		(*size)--;
+		if (info->b->data < info->b->next->data)
+			ps_sb(info, 1);
+	}
+	else if (info->b->data < info->b->next->data && \
+		info->b->data < info->b->next->next->data)
+	{
+		ps_rb(info, 1);
+		if (info->b->data < info->b->next->data)
+			ps_sb(info, 1);
+	}
+	else if ((info->b->next->next->data > info->b->next->data) && \
+		(info->b->next->next->data > info->b->data))
+	{
+		if (info->b->data < info->b->next->data)
+			ps_sb(info, 1);
+		ps_rrb(info, 1);
+	}
+	else if (info->b->data < info->b->next->data)
+		ps_sb(info, 1);
+}
+
+void		sort_less_three_stack_b(t_info_list *info, int *size)
 {
 	if (ft_list_size(info->b) <= 3)
 	{
-		while (!swap_is_sort_b(info->b, ft_list_size(info->a)))
+		if (ft_list_size(info->b) == 3)
+			sorting_less_three_elem(info, size);
+		else if (ft_list_size(info->b) == 2)
 		{
-			if (ft_list_size(info->b) == 3)
-			{
-				if (info->b->data < info->b->next->data && \
-					info->b->data < info->b->next->next->data)
-					ps_rb(info, 1);
-				else if ((info->b->next->next->data > info->b->next->data) || \
-					(info->b->next->next->data > info->b->data))
-					ps_rrb(info, 1);
-				else if (info->b->data < info->b->next->data)
-					ps_sb(info, 1);
-			}
-			else
-			{
-				if (info->b->data < info->b->next->data)
-					ps_sb(info, 1);
-			}
+			if (info->b->data < info->b->next->data)
+				ps_sb(info, 1);
 		}
+		else
+			;
 	}
 	else
 		sort_more_three_stack_b(info, size);
@@ -102,25 +124,15 @@ void		sort_less_three_stack_reverse_b(t_info_list *info, int *size)
 {
 	if (ft_list_size(info->b) <= 3)
 	{
-		while (!swap_is_sort_b(info->b, ft_list_size(info->a)))
+		if (ft_list_size(info->b) == 3)
+			sorting_less_three_elem(info, size);
+		else if (ft_list_size(info->b) == 2)
 		{
-			if (ft_list_size(info->b) == 3)
-			{
-				if (info->b->data < info->b->next->data && \
-					info->b->data < info->b->next->next->data)
-					ps_rb(info, 1);
-				else if ((info->b->next->next->data > info->b->next->data) || \
-					(info->b->next->next->data > info->b->data))
-					ps_rrb(info, 1);
-				else if (info->b->data < info->b->next->data)
-					ps_sb(info, 1);
-			}
-			else
-			{
-				if (info->b->data < info->b->next->data)
-					ps_sb(info, 1);
-			}
+			if (info->b->data < info->b->next->data)
+				ps_sb(info, 1);
 		}
+		else
+			;
 	}
 	else
 		sort_more_three_stack_reverse_b(info, size);
