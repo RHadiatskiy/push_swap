@@ -134,5 +134,6 @@ int			main(int argc, char **argv)
 	}
 	ps_is_sort(info);
 	delete_info_list(info);
+	free(line);
 	return (0);
 }
