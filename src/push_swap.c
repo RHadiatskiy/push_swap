@@ -13,24 +13,6 @@
 #include "../include/checker.h"
 #include "../include/push_swap.h"
 
-void		dealloc_stack(t_stack *stack)
-{
-	if (stack)
-	{
-		if (stack->next)
-			dealloc_stack(stack->next);
-		ft_bzero(stack, sizeof(stack));
-		free(stack);
-	}
-}
-
-void		del(t_info_list *start)
-{
-	dealloc_stack(start->a);
-	dealloc_stack(start->b);
-	free(start);
-}
-
 int			main(int argc, char **argv)
 {
 	int				i;

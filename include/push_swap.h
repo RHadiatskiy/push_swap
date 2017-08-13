@@ -54,5 +54,7 @@ void		sorting_a_two(t_info_list *info);
 void		sorting_b_one(t_info_list *info);
 void		sorting_b_two(t_info_list *info);
 void		sorting_b_three(t_info_list *info);
+void		del(t_info_list *start);
+void		dealloc_stack(t_stack *stack);
 
 #endif

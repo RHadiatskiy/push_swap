@@ -14,6 +14,8 @@
 #include "../include/structure.h"
 #include "../include/checker.h"
 
+void		dealloc_stack(t_stack *stack);
+
 void		sort_more_three_stack_a(t_info_list *info, int size)
 {
 	if (size == 2)
@@ -96,17 +98,20 @@ void		reverse_recursion_stack_a(t_info_list *info, t_size_list *size_list)
 	intmax_t		pivot;
 	int				size;
 	t_size_list 	*size_list_next;
-	
+	t_stack			*tmp;
+
 	// dprintf(2, "\n\n%sREVERSE stack_a : %s\n", GREEN, RESET);
 	// print_stack_list(info);
 	// dprintf(2, "SIZE A: %ld\n", size_list->a_size);
 	// dprintf(2, "SIZE B: %ld\n", size_list->b_size);
+	tmp = NULL;
 	size_list_next = initial_size_list();
 	if ((size = size_list->a_size) <= 3)
 		sort_less_three_stack_reverse_a(info, size);
 	else
 	{
-		pivot = take_elem(ft_sort_list(ft_lstncpy(info->a, (ft_list_size(info->a) - size), size)), size / 2);
+		tmp = ft_lstncpy(info->a, (ft_list_size(info->a) - size), size);
+		pivot = take_elem(ft_sort_list(tmp), size / 2);
 		// dprintf(2, "%sPIVOT : %jd%s\n",RED, pivot, RESET);
 		if (size == ft_list_size(info->a))
 			sorting_stack_a(info, size_list_next, pivot, &size);
@@ -115,6 +120,7 @@ void		reverse_recursion_stack_a(t_info_list *info, t_size_list *size_list)
 		sort_by_pivot_stack_a(info, size_list_next);
 		sort_by_pivot_stack_b(info, size_list_next);
 	}
+	dealloc_stack(tmp);
 	free(size_list_next);
 }
 
@@ -123,21 +129,25 @@ void		sort_by_pivot_stack_a(t_info_list *info, t_size_list *size_list)
 	intmax_t		pivot;
 	int				size;
 	t_size_list 	*size_list_next;
-	
+	t_stack			*tmp;
+
 	// dprintf(2, "\n\n%sstack_a : %s\n", GREEN, RESET);
 	// print_stack_list(info);
 	// dprintf(2, "SIZE A: %ld\n", size_list->a_size);
 	// dprintf(2, "SIZE B: %ld\n", size_list->b_size);	
+	tmp = NULL;
 	size_list_next = initial_size_list();
 	if ((size = size_list->a_size) <= 3)
 		sort_less_three_stack_a(info, size);
 	else
 	{
-		pivot = take_elem(ft_sort_list(ft_lstncpy(info->a, 0, size)), size / 2);
+		tmp = ft_lstncpy(info->a, 0, size);
+		pivot = take_elem(ft_sort_list(tmp), size / 2);
 		// dprintf(2, "%sPIVOT : %jd%s\n",RED, pivot, RESET);
 		sorting_stack_a(info, size_list_next, pivot, &size);
 		reverse_recursion_stack_a(info, size_list_next);
 		sort_by_pivot_stack_b(info, size_list_next);
 	}
+	dealloc_stack(tmp);
 	free(size_list_next);
 }
