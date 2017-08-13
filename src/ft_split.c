@@ -90,7 +90,7 @@ char	**ft_split(char *s)
 	int		len;
 
 	len = count_words(s);
-	if (!(tab = (char **)malloc(sizeof(char *) * len + 1)))
+	if (!(tab = (char **)malloc(sizeof(char *) * (len + 1))))
 		return (NULL);
 	tab = allocate_tab(tab, s);
 	tab = put_tab(tab, s);

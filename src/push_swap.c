@@ -6,39 +6,29 @@
 /*   By: rhadiats <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/01 19:22:31 by rhadiats          #+#    #+#             */
-/*   Updated: 2017/06/01 19:22:35 by rhadiats         ###   ########.fr       */
+/*   Updated: 2017/08/13 15:29:10 by bsemchuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/checker.h"
 #include "../include/push_swap.h"
 
-void		delete_info_list(t_info_list *info)
+void		dealloc_stack(t_stack *stack)
 {
-	t_stack		*a_temp;
-	t_stack		*b_temp;
+	if (stack)
+	{
+		if (stack->next)
+			dealloc_stack(stack->next);
+		ft_bzero(stack, sizeof(stack));
+		free(stack);
+	}
+}
 
-	if (info->a)
-	{
-		while (info->a)
-		{
-			a_temp = info->a;
-			info->a = info->a->next;
-			free(a_temp);
-		}
-	}
-	if (info->b)
-	{
-		while (info->b)
-		{
-			b_temp = info->b;
-			info->b = info->b->next;
-			free(b_temp);
-		}
-	}
-	free(info->a);
-	free(info->b);
-	free(info);
+void		del(t_info_list *start)
+{
+	dealloc_stack(start->a);
+	dealloc_stack(start->b);
+	free(start);
 }
 
 int			main(int argc, char **argv)
@@ -62,7 +52,7 @@ int			main(int argc, char **argv)
 	if (!swap_is_sort_a(info->a, ft_list_size(info->a)) && \
 		ft_list_size(info->b) == 0)
 		sort_by_pivot_stack_a(info, size_list);
-	delete_info_list(info);
+	del(info);
 	free(size_list);
 	return (0);
 }

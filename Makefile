@@ -6,7 +6,7 @@
 #    By: rhadiats <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/05/22 18:51:19 by rhadiats          #+#    #+#              #
-#    Updated: 2017/05/22 18:51:22 by rhadiats         ###   ########.fr        #
+#    Updated: 2017/08/13 15:21:32 by bsemchuk         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME=push_swap
 CHCK=checker
 
 CC= gcc -o
-CFLAGS= -Wall -Werror -Wextra
+CFLAGS= -Wall -Werror -Wextra -g
 LIBFT= -L ./libft/ -lft
 PUSH= ./src/push_swap.c
 CHECK= ./src/checker.c
