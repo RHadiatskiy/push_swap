@@ -18,21 +18,19 @@ void		stack_list_added(t_stack *stack, intmax_t data)
 {
 	t_stack		*temp;
 
-	if ((temp = (t_stack *)malloc(sizeof(t_stack))))
+	if (stack->n == 0)
 	{
-		if (stack->n == 0)
-		{
-			stack->data = data;
-			stack->n = stack->n + 1;
-		}
-		else
-		{
-			while (stack->next)
-				stack = stack->next;
-			temp->data = data;
-			temp->next = NULL;
-			stack->next = temp;
-		}
+		stack->data = data;
+		stack->n = stack->n + 1;
+		stack->next = NULL;
+	}
+	else if ((temp = (t_stack *)malloc(sizeof(t_stack))))
+	{
+		while (stack->next)
+			stack = stack->next;
+		temp->data = data;
+		temp->next = NULL;
+		stack->next = temp;
 	}
 }
 
