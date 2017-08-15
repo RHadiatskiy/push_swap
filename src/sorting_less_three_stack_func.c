@@ -17,29 +17,7 @@
 void		sort_less_three_stack_a(t_info_list *info, int size)
 {
 	if (ft_list_size(info->a) <= 3)
-	{
-		while (!swap_is_sort_a(info->a, ft_list_size(info->a)))
-		{
-			if (ft_list_size(info->a) == 3)
-			{
-				if (info->a->data > info->a->next->data && \
-					info->a->data > info->a->next->next->data)
-					ps_ra(info, 1);
-				else if ((info->a->next->next->data < info->a->next->data) || \
-					(info->a->next->next->data < info->a->data))
-					ps_rra(info, 1);
-				else if (info->a->data > info->a->next->data)
-					ps_sa(info, 1);
-			}
-			else if (ft_list_size(info->a) == 2)
-			{
-				if (info->a->data > info->a->next->data)
-					ps_sa(info, 1);
-			}
-			else
-				;
-		}
-	}
+		sorting_algorithm_for_stack_a_less_three(info);
 	else
 		sort_more_three_stack_a(info, size);
 }
@@ -47,29 +25,7 @@ void		sort_less_three_stack_a(t_info_list *info, int size)
 void		sort_less_three_stack_reverse_a(t_info_list *info, int size)
 {
 	if (ft_list_size(info->a) <= 3)
-	{
-		while (!swap_is_sort_a(info->a, ft_list_size(info->a)))
-		{
-			if (ft_list_size(info->a) == 3)
-			{
-				if (info->a->data > info->a->next->data && \
-					info->a->data > info->a->next->next->data)
-					ps_ra(info, 1);
-				else if ((info->a->next->next->data < info->a->next->data) || \
-					(info->a->next->next->data < info->a->data))
-					ps_rra(info, 1);
-				else if (info->a->data > info->a->next->data)
-					ps_sa(info, 1);
-			}
-			else if (ft_list_size(info->a) == 2)
-			{
-				if (info->a->data > info->a->next->data)
-					ps_sa(info, 1);
-			}
-			else
-				;
-		}
-	}
+		sorting_algorithm_for_stack_reverse_a_less_three(info);
 	else
 		sort_more_three_stack_reverse_a(info, size);
 }
@@ -114,7 +70,9 @@ void		sort_less_three_stack_b(t_info_list *info, int *size)
 				ps_sb(info, 1);
 		}
 		else
+		{
 			;
+		}
 	}
 	else
 		sort_more_three_stack_b(info, size);
@@ -132,7 +90,9 @@ void		sort_less_three_stack_reverse_b(t_info_list *info, int *size)
 				ps_sb(info, 1);
 		}
 		else
+		{
 			;
+		}
 	}
 	else
 		sort_more_three_stack_reverse_b(info, size);

@@ -14,8 +14,6 @@
 #include "../include/structure.h"
 #include "../include/checker.h"
 
-void		dealloc_stack(t_stack *stack);
-
 void		sort_more_three_stack_a(t_info_list *info, int size)
 {
 	if (size == 2)
@@ -81,9 +79,6 @@ void		sort_more_three_stack_reverse_a(t_info_list *info, int size)
 		if (info->a->data > info->a->next->data && \
 			info->a->data > info->a->next->next->data)
 			sorting_a_one(info);
-		// else if ((info->a->next->data > info->a->data) && \
-		// 	(info->a->next->data > info->a->next->next->data))
-		// 	sorting_a_two(info);
 		else if (info->a->next->next->data > info->a->data && \
 			info->a->next->next->data > info->a->next->data)
 		{
@@ -97,7 +92,7 @@ void		reverse_recursion_stack_a(t_info_list *info, t_size_list *size_list)
 {
 	intmax_t		pivot;
 	int				size;
-	t_size_list 	*size_list_next;
+	t_size_list		*size_list_next;
 	t_stack			*tmp;
 
 	// dprintf(2, "\n\n%sREVERSE stack_a : %s\n", GREEN, RESET);

@@ -49,21 +49,6 @@ int			ft_list_size(t_stack *stack)
 	return (size);
 }
 
-t_stack		*ft_lstcpy(t_stack *stack)
-{
-	t_stack		*tmp;
-
-	if (!stack)
-		return (NULL);
-	tmp = create_stack_list();
-	while (stack)
-	{
-		stack_list_added(tmp, stack->data);
-		stack = stack->next;
-	}
-	return (tmp);
-}
-
 t_stack		*ft_lstncpy(t_stack *stack, long start, long n)
 {
 	t_stack			*tmp;
