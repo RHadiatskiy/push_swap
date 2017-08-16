@@ -51,35 +51,6 @@ int			parse_and_fill_list(int ac, char **av, int *i, t_info_list *info)
 	return (0);
 }
 
-void		delete_info_list(t_info_list *info)
-{
-	t_stack		*temp;
-
-	if (info->a)
-	{
-		while (info->a)
-		{
-			temp = info->a;
-			info->a = info->a->next;
-			free(temp);
-			temp = NULL;
-		}
-	}
-	if (info->b)
-	{
-		while (info->b)
-		{
-			temp = info->b;
-			info->b = info->b->next;
-			free(temp);
-			temp = NULL;
-		}
-	}
-	free(info->a);
-	free(info->b);
-	free(info);
-}
-
 int			reading_command(char *line, t_info_list *info)
 {
 	while (get_next_line(0, &line))
@@ -133,7 +104,7 @@ int			main(int argc, char **argv)
 		printf("\n%sTOTAL :%s \t%s%jd%s\n", WHITE, RESET, RED, info->i, RESET);
 	}
 	ps_is_sort(info);
-	delete_info_list(info);
+	del(info);
 	free(line);
 	return (0);
 }

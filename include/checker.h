@@ -61,6 +61,7 @@ int			errors_report(int error);
 int			parse_digit(char *str);
 char		**ft_split(char *line);
 t_info_list	*initial_info_list(void);
-void		delete_info_list(t_info_list *info);
+void		del(t_info_list *start);
+void		dealloc_stack(t_stack *stack);
 
 #endif
