@@ -74,8 +74,19 @@ int			reading_command(char *line, t_info_list *info)
 		}
 	}
 	if (info->flag_v == 1)
-		ft_printf("\n%sTOTAL :%s \t%s%jd%s\n", WHITE, RESET, RED, info->i, RESET);
+		ft_printf("\n%sTOTAL :%s \t%s%jd%s\n", \
+			WHITE, RESET, RED, info->i, RESET);
 	return (1);
+}
+
+void		flags_c_printing(t_info_list *info)
+{
+	print_stack_list(info);
+	ft_printf("%sSize Stack A :%s \t%s%d%s\n", WHITE, RESET, GREEN, \
+		ft_list_size(info->a), RESET);
+	ft_printf("%sSize Stack B :%s \t%s%d%s\n", WHITE, RESET, RED, \
+		ft_list_size(info->b), RESET);
+	ft_printf("\n%sTOTAL :%s \t%s%jd%s\n", WHITE, RESET, RED, info->i, RESET);
 }
 
 int			main(int argc, char **argv)
@@ -94,14 +105,7 @@ int			main(int argc, char **argv)
 	if (!reading_command(line, info))
 		return (errors_report(1));
 	if (info->flag_c == 1)
-	{
-		print_stack_list(info);
-		ft_printf("%sSize Stack A :%s \t%s%d%s\n", WHITE, RESET, GREEN, \
-			ft_list_size(info->a), RESET);
-		ft_printf("%sSize Stack B :%s \t%s%d%s\n", WHITE, RESET, RED, \
-			ft_list_size(info->b), RESET);
-		ft_printf("\n%sTOTAL :%s \t%s%jd%s\n", WHITE, RESET, RED, info->i, RESET);
-	}
+		flags_c_printing(info);
 	ps_is_sort(info);
 	del(info);
 	free(line);

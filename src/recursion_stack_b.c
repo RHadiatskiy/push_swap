@@ -54,33 +54,6 @@ void		sort_more_three_stack_reverse_b(t_info_list *info, int *size)
 		sorting_algorithm_for_stack_reverse_b_add_2(info, &i, size);
 	else
 		sorting_algorithm_for_stack_reverse_b_add_3(info, &i, size);
-/*	else
-	{
-		while (--i > 0)
-			ps_rb(info, 0);
-		while ((*size) > ++i)
-			ps_rrb(info, 1);
-		if ((*size) == 2)
-		{
-			if (info->b->data < info->b->next->data)
-				ps_sb(info, 1);
-		}
-		else if ((*size) == 3)
-		{
-			if (info->b->data > info->b->next->data && \
-				info->b->data > info->b->next->next->data && \
-				info->b->next->data < info->b->next->next->data)
-				sorting_b_one(info);
-			else if ((info->b->next->next->data > info->b->next->data) && \
-				(info->b->next->next->data > info->b->data))
-				sorting_b_two(info);
-			else if (info->b->next->data > info->b->data && \
-				info->b->next->data > info->b->next->next->data)
-				sorting_b_three(info);
-			else if (info->b->data < info->b->next->data)
-				ps_sb(info, 1);
-		}
-	} */
 }
 
 void		reverse_recursion_stack_b(t_info_list *info, t_size_list *size_list)
