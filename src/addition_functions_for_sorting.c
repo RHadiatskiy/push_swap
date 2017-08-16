@@ -12,7 +12,6 @@
 
 #include "../include/push_swap.h"
 #include "../include/structure.h"
-#include "../include/checker.h"
 
 void		sorting_algorithm_for_stack_a_less_three(t_info_list *info)
 {

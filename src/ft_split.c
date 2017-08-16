@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/checker.h"
+#include "../include/push_swap.h"
 
 int		count_words(char *s)
 {

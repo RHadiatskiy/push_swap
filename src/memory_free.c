@@ -11,8 +11,6 @@
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
-#include "../include/structure.h"
-#include "../include/checker.h"
 
 void		del(t_info_list *start)
 {

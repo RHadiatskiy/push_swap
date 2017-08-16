@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "../include/checker.h"
-#include "../include/structure.h"
 #include "../include/push_swap.h"
 
 int			ps_is_sort(t_info_list *info)

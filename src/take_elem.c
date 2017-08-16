@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "../include/structure.h"
-#include "../include/checker.h"
 #include "../include/push_swap.h"
 
 intmax_t	take_elem(t_stack *stack, int n)

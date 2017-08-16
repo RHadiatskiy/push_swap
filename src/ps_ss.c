@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/checker.h"
 #include "../include/structure.h"
 #include "../include/push_swap.h"
 

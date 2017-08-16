@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/checker.h"
 #include "../include/push_swap.h"
 
 int			errors_report(int error)

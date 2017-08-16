@@ -36,6 +36,7 @@
 # include "structure.h"
 # include "../libft/libft.h"
 
+int			ft_printf(const char *format, ...);
 int			ft_atoi(const char *str);
 int			ft_list_size(t_stack *stack);
 int			*ft_arrcpy(int *src, unsigned long n);

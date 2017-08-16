@@ -18,6 +18,7 @@ CFLAGS= -Wall -Werror -Wextra -g
 LIBFT= -L ./libft/ -lft
 PUSH= ./src/push_swap.c
 CHECK= ./src/checker.c
+LIBFTPRINTF= ./src/ft_printf/libftprintf.a
 
 SRC= ./src/check_command.c ./src/choose_command.c \
 		./src/errors_report.c ./src/ft_list_func.c \
@@ -36,20 +37,16 @@ all: $(NAME)
 
 $(NAME):
 	@make -C libft
-	@$(CC) $(NAME) $(CFLAGS) $(PUSH) $(SRC) $(LIBFT)
-	@$(CC) $(CHCK) $(CFLAGS) $(CHECK) $(SRC) $(LIBFT)
-
-# push:
-# 	@$(CC) $(NAME) $(CFLAGS) $(PS_SRC) $(OPS_SRC) $(LIBFT)
-
-# check:
-# 	@$(CC) $(CHCK) $(CFLAGS) $(CR_SRC) $(OPS_SRC) $(LIBFT)
+	@make -C ./src/ft_printf
+	@$(CC) $(NAME) $(CFLAGS) $(PUSH) $(SRC) $(LIBFT) $(LIBFTPRINTF)
+	@$(CC) $(CHCK) $(CFLAGS) $(CHECK) $(SRC) $(LIBFT) $(LIBFTPRINTF)
 
 clean:
 	@make -C libft fclean
+	@make -C ./src/ft_printf fclean
 
 fclean: clean
-	@rm $(NAME)
-	@rm $(CHCK)
+	@rm -f $(NAME)
+	@rm -f $(CHCK)
 
 re: fclean all

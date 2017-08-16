@@ -11,8 +11,6 @@
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
-#include "../include/structure.h"
-#include "../include/checker.h"
 
 void		sort_more_three_stack_a(t_info_list *info, int size)
 {

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/checker.h"
+#include "../include/push_swap.h"
 
 int			parse_digit(char *str)
 {

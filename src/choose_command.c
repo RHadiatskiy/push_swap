@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "../include/structure.h"
-#include "../include/checker.h"
+#include "../include/push_swap.h"
 
 void		choose_command(t_info_list *info, int print, char *line)
 {

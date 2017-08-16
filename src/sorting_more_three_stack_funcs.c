@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/checker.h"
 #include "../include/push_swap.h"
 
 void		sorting_a_one(t_info_list *info)

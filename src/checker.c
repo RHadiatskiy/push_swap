@@ -10,8 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/structure.h"
-#include "../include/checker.h"
+#include "../include/push_swap.h"
 
 void		pasrs_flags(char **av, int *i, t_info_list *info)
 {
@@ -68,14 +67,14 @@ int			reading_command(char *line, t_info_list *info)
 			choose_command(info, 1, line);
 			info->i++;
 			print_stack_list(info);
-			printf("%sSize Stack A :%s \t%s%d%s\n", WHITE, RESET, GREEN, \
+			ft_printf("%sSize Stack A :%s \t%s%d%s\n", WHITE, RESET, GREEN, \
 				ft_list_size(info->a), RESET);
-			printf("%sSize Stack B :%s \t%s%d%s\n", WHITE, RESET, RED, \
+			ft_printf("%sSize Stack B :%s \t%s%d%s\n", WHITE, RESET, RED, \
 				ft_list_size(info->b), RESET);
 		}
 	}
 	if (info->flag_v == 1)
-		printf("\n%sTOTAL :%s \t%s%jd%s\n", WHITE, RESET, RED, info->i, RESET);
+		ft_printf("\n%sTOTAL :%s \t%s%jd%s\n", WHITE, RESET, RED, info->i, RESET);
 	return (1);
 }
 
@@ -97,11 +96,11 @@ int			main(int argc, char **argv)
 	if (info->flag_c == 1)
 	{
 		print_stack_list(info);
-		printf("%sSize Stack A :%s \t%s%d%s\n", WHITE, RESET, GREEN, \
+		ft_printf("%sSize Stack A :%s \t%s%d%s\n", WHITE, RESET, GREEN, \
 			ft_list_size(info->a), RESET);
-		printf("%sSize Stack B :%s \t%s%d%s\n", WHITE, RESET, RED, \
+		ft_printf("%sSize Stack B :%s \t%s%d%s\n", WHITE, RESET, RED, \
 			ft_list_size(info->b), RESET);
-		printf("\n%sTOTAL :%s \t%s%jd%s\n", WHITE, RESET, RED, info->i, RESET);
+		ft_printf("\n%sTOTAL :%s \t%s%jd%s\n", WHITE, RESET, RED, info->i, RESET);
 	}
 	ps_is_sort(info);
 	del(info);

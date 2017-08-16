@@ -12,7 +12,6 @@
 
 #include "../include/push_swap.h"
 #include "../include/structure.h"
-#include "../include/checker.h"
 
 void		sorting_stack_a(t_info_list *info, t_size_list *size_list_next, \
 	int pivot, int *size)

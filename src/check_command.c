@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "../include/structure.h"
-#include "../include/checker.h"
+#include "../include/push_swap.h"
 
 int			check_command(char *line)
 {

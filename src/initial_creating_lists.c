@@ -10,8 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/structure.h"
-#include "../include/checker.h"
 #include "../include/push_swap.h"
 
 t_stack			*create_stack_list(void)
