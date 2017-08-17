@@ -69,7 +69,7 @@ void		sorting_stack_b(t_info_list *info, t_size_list *size_list_next, \
 	{
 		if (info->a->data - 1 == info->b->data && size_list_next->a_size == 0)
 			ps_pa(info, 1);
-		else if ((info->b->data) > pivot)
+		else if ((info->b->data) >= pivot)
 		{
 			ps_pa(info, 1);
 			size_list_next->a_size++;

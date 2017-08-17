@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-
+/*
 static int		check_end(t_fd *list, char **line)
 {
 	char	*ptr;
@@ -84,4 +84,54 @@ int				get_next_line(const int fd, char **line)
 		list = elem;
 	}
 	return (ft_gnl(list, buff, line));
+}
+*/
+
+int		cutting_line(const int fd, char *buff, char **line)
+{
+	int				ret;
+	static char		*str;
+	char			*tmp;
+	char			*ptr;
+
+	if (!str)
+		str = ft_strnew(1);
+	while (!(ptr = ft_strchr(str, '\n')) && \
+		(ret = read(fd, buff, BUFF_SIZE)) > 0)
+	{
+		buff[ret] = '\0';
+		tmp = ft_strjoin(str, buff);
+		free(str);
+		str = tmp;
+	}
+	if ((ptr = ft_strchr(str, '\n')) != NULL)
+	{
+		*ptr++ = '\0';
+		*line = ft_strdup(str);
+		tmp = str;
+		str = ft_strdup(ptr);
+		free(tmp);
+		return (1);
+	}
+	else if ((ptr = ft_strchr(str, '\0')) != NULL)
+	{
+		if (ptr == str)
+		{
+			*line = str;
+			return (0);
+		}
+		*line = ft_strdup(str);
+		str = ptr;
+		return (1);
+	}
+	return (0);
+}
+
+int		get_next_line(const int fd, char **line)
+{
+	char			buff[BUFF_SIZE + 1];
+	
+	if (fd < 0 || !line || (read(fd, buff, 0) < 0))
+		return (-1);
+	return (cutting_line(fd, buff, line));
 }

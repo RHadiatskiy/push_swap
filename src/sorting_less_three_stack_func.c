@@ -24,7 +24,7 @@ void		sort_less_three_stack_a(t_info_list *info, int size)
 void		sort_less_three_stack_reverse_a(t_info_list *info, int size)
 {
 	if (ft_list_size(info->a) <= 3)
-		sorting_algorithm_for_stack_reverse_a_less_three(info);
+		sorting_algorithm_for_stack_a_less_three(info);
 	else
 		sort_more_three_stack_reverse_a(info, size);
 }

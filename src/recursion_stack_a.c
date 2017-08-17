@@ -34,6 +34,10 @@ void		sort_more_three_stack_a(t_info_list *info, int size)
 				ps_sa(info, 1);
 		}
 	}
+	else
+	{
+		;
+	}
 }
 
 void		check_more_three_stack_a(t_info_list *info, int size)
@@ -83,6 +87,10 @@ void		sort_more_three_stack_reverse_a(t_info_list *info, int size)
 			if (info->a->data > info->a->next->data)
 				ps_sa(info, 1);
 		}
+	}
+	else
+	{
+		;
 	}
 }
 
