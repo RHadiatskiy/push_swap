@@ -129,13 +129,13 @@ void		sort_by_pivot_stack_a(t_info_list *info, t_size_list *size_list)
 {
 	intmax_t		pivot;
 	int				size;
-	t_size_list 	*size_list_next;
+	t_size_list		*size_list_next;
 	t_stack			*tmp;
 
 	// dprintf(2, "\n\n%sstack_a : %s\n", GREEN, RESET);
 	// print_stack_list(info);
 	// dprintf(2, "SIZE A: %ld\n", size_list->a_size);
-	// dprintf(2, "SIZE B: %ld\n", size_list->b_size);	
+	// dprintf(2, "SIZE B: %ld\n", size_list->b_size);
 	tmp = NULL;
 	size_list_next = initial_size_list();
 	if ((size = size_list->a_size) <= 3)

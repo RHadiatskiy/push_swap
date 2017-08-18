@@ -108,6 +108,5 @@ int			main(int argc, char **argv)
 		flags_c_printing(info);
 	ps_is_sort(info);
 	del(info);
-	free(line);
 	return (0);
 }
