@@ -52,12 +52,12 @@ void		check_more_three_stack_a(t_info_list *info, int size)
 	{
 		while (--i > 0)
 			ps_ra(info, 0);
-		ps_rra(info, 1);
-		if (info->a->data > info->a->next->data)
-			ps_sa(info, 1);
-		ps_rra(info, 1);
-		if (info->a->data > info->a->next->data)
-			ps_sa(info, 1);
+		while (size > ++i)
+		{
+			ps_rra(info, 1);
+			if (info->a->data > info->a->next->data)
+				ps_sa(info, 1);
+		}
 	}
 	else
 	{
@@ -135,7 +135,7 @@ void		sort_by_pivot_stack_a(t_info_list *info, t_size_list *size_list)
 	// dprintf(2, "\n\n%sstack_a : %s\n", GREEN, RESET);
 	// print_stack_list(info);
 	// dprintf(2, "SIZE A: %ld\n", size_list->a_size);
-	// dprintf(2, "SIZE B: %ld\n", size_list->b_size);
+	// dprintf(2, "SIZE B: %ld\n", size_list->b_size);	
 	tmp = NULL;
 	size_list_next = initial_size_list();
 	if ((size = size_list->a_size) <= 3)
