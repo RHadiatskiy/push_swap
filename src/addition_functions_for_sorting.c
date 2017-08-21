@@ -41,34 +41,34 @@ void		sorting_algorithm_for_stack_a_less_three(t_info_list *info)
 }
 
 void		sorting_algorithm_for_stack_reverse_b_add_1(t_info_list *info, \
-	int *i, int *size)
+	int *i, t_size_list *size_list)
 {
 	while (--(*i) > 0)
 		ps_rb(info, 0);
 	ps_pa(info, 1);
-	(*size)--;
-	while ((*size) > (*i)++)
+	size_list->b_size--;
+	while (size_list->b_size > (*i)++)
 		ps_rrb(info, 1);
 	if (info->b->data < info->b->next->data)
 		ps_sb(info, 1);
 }
 
 void		sorting_algorithm_for_stack_reverse_b_add_2(t_info_list *info, \
-	int *i, int *size)
+	int *i, t_size_list *size_list)
 {
 	while (--(*i) > 0)
 		ps_rb(info, 0);
-	while ((*size) > ++(*i))
+	while (size_list->b_size > ++(*i))
 		ps_rrb(info, 1);
 	sorting_b_three(info);
 }
 
 void		sorting_algorithm_for_stack_reverse_b_add_3(t_info_list *info, \
-	int *i, int *size)
+	int *i, t_size_list *size_list)
 {
 	while (--(*i) > 0)
 		ps_rb(info, 0);
-	while ((*size) > ++(*i))
+	while (size_list->b_size > ++(*i))
 	{
 		ps_rrb(info, 1);
 		if (info->b->data < info->b->next->data)

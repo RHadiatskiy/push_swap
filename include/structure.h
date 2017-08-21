@@ -30,6 +30,8 @@ typedef struct		s_info_list
 	unsigned int	flag_v : 1;
 	unsigned int	flag_c : 1;
 	size_t			i;
+	int				position_a;
+	int				position_b;
 }					t_info_list;
 
 typedef struct		s_size_list

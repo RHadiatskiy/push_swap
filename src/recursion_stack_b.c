@@ -12,20 +12,20 @@
 
 #include "../include/push_swap.h"
 
-void		sort_more_three_stack_b(t_info_list *info, int *size)
+void		sort_more_three_stack_b(t_info_list *info, t_size_list *size_list)
 {
-	if ((*size) == 2)
+	if (size_list->b_size == 2)
 	{
 		if (info->b->data < info->b->next->data)
 			ps_sb(info, 1);
 	}
-	else if ((*size) == 3)
+	else if (size_list->b_size == 3)
 	{
 		if (info->b->data > info->b->next->data && \
 			info->b->data > info->b->next->next->data)
 		{
 			ps_pa(info, 1);
-			(*size)--;
+			size_list->b_size--;
 			if (info->b->data < info->b->next->data)
 				ps_sb(info, 1);
 		}
@@ -38,28 +38,28 @@ void		sort_more_three_stack_b(t_info_list *info, int *size)
 	}
 }
 
-void		sort_more_three_stack_reverse_b(t_info_list *info, int *size)
+void		sort_more_three_stack_reverse_b(t_info_list *info, t_size_list *size_list)
 {
 	int				i;
 
 	i = 0;
-	while ((*size) > ++i)
+	// dprintf(2, "\n\nPOSITION B : %d\n\n", info->position_b);
+	while (size_list->b_size > ++i)
 		ps_rrb(info, 0);
 	if (info->b->next->next->data > info->b->data && \
 		info->b->next->next->data > info->b->next->data)
-		sorting_algorithm_for_stack_reverse_b_add_1(info, &i, size);
+		sorting_algorithm_for_stack_reverse_b_add_1(info, &i, size_list);
 	else if (info->b->data < info->b->next->data && \
 		info->b->data < info->b->next->next->data && \
 		info->b->next->data > info->b->next->next->data)
-		sorting_algorithm_for_stack_reverse_b_add_2(info, &i, size);
+		sorting_algorithm_for_stack_reverse_b_add_2(info, &i, size_list);
 	else
-		sorting_algorithm_for_stack_reverse_b_add_3(info, &i, size);
+		sorting_algorithm_for_stack_reverse_b_add_3(info, &i, size_list);
 }
 
 void		reverse_recursion_stack_b(t_info_list *info, t_size_list *size_list)
 {
 	intmax_t		pivot;
-	int				size;
 	t_size_list		*size_list_next;
 	t_stack			*tmp;
 
@@ -69,20 +69,20 @@ void		reverse_recursion_stack_b(t_info_list *info, t_size_list *size_list)
 	// dprintf(2, "SIZE B: %ld\n", size_list->b_size);
 	tmp = NULL;
 	size_list_next = initial_size_list();
-	if ((size = size_list->b_size) <= 3)
+	if (size_list->b_size <= 3)
 	{
-		sort_less_three_stack_reverse_b(info, &size);
-		while (size-- != 0)
+		sort_less_three_stack_reverse_b(info, size_list);
+		while (size_list->b_size-- != 0)
 			ps_pa(info, 1);
 	}
 	else
 	{
-		tmp = ft_lstncpy(info->b, (ft_list_size(info->b) - size), size);
-		pivot = take_elem(ft_sort_list(tmp), size / 2);
+		tmp = ft_lstncpy(info->b, (ft_list_size(info->b) - size_list->b_size), size_list->b_size);
+		pivot = take_elem(ft_sort_list(tmp), size_list->b_size / 2);
 		// dprintf(2, "%sPIVOT : %jd%s\n",RED, pivot, RESET);
-		size == ft_list_size(info->b) ? \
-		sorting_stack_b(info, size_list_next, pivot, &size) : \
-		reverse_sorting_stack_b(info, size_list_next, pivot, &size);
+		size_list->b_size == ft_list_size(info->b) ? \
+		sorting_stack_b(info, size_list_next, pivot, size_list->b_size) : \
+		reverse_sorting_stack_b(info, size_list_next, pivot, size_list->b_size);
 		sort_by_pivot_stack_a(info, size_list_next);
 		sort_by_pivot_stack_b(info, size_list_next);
 	}
@@ -93,7 +93,6 @@ void		reverse_recursion_stack_b(t_info_list *info, t_size_list *size_list)
 void		sort_by_pivot_stack_b(t_info_list *info, t_size_list *size_list)
 {
 	intmax_t		pivot;
-	int				size;
 	t_size_list		*size_list_next;
 	t_stack			*tmp;
 
@@ -103,18 +102,18 @@ void		sort_by_pivot_stack_b(t_info_list *info, t_size_list *size_list)
 	// dprintf(2, "SIZE B: %ld\n", size_list->b_size);
 	tmp = NULL;
 	size_list_next = initial_size_list();
-	if ((size = size_list->b_size) <= 3)
+	if (size_list->b_size <= 3)
 	{
-		sort_less_three_stack_b(info, &size);
-		while (size-- != 0)
+		sort_less_three_stack_b(info, size_list);
+		while (size_list->b_size-- != 0)
 			ps_pa(info, 1);
 	}
 	else
 	{
-		tmp = ft_lstncpy(info->b, 0, size);
-		pivot = take_elem(ft_sort_list(tmp), size / 2);
+		tmp = ft_lstncpy(info->b, 0, size_list->b_size);
+		pivot = take_elem(ft_sort_list(tmp), size_list->b_size / 2);
 		// dprintf(2, "%sPIVOT : %jd%s\n",RED, pivot, RESET);
-		sorting_stack_b(info, size_list_next, pivot, &size);
+		sorting_stack_b(info, size_list_next, pivot, size_list->b_size);
 		sort_by_pivot_stack_a(info, size_list_next);
 		reverse_recursion_stack_b(info, size_list_next);
 	}

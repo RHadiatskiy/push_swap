@@ -52,26 +52,26 @@ t_size_list	*initial_size_list(void);
 t_info_list	*initial_info_list(void);
 t_stack		*create_stack_list(void);
 void		stack_list_added(t_stack *stack, intmax_t data);
-void		sort_less_three_stack_a(t_info_list *info, int size);
-void		sort_less_three_stack_b(t_info_list *info, int *size);
-void		sort_less_three_stack_reverse_a(t_info_list *info, int size);
-void		sort_less_three_stack_reverse_b(t_info_list *info, int *size);
-void		sort_more_three_stack_a(t_info_list *info, int size);
-void		sort_more_three_stack_reverse_a(t_info_list *info, int size);
-void		sort_more_three_stack_b(t_info_list *info, int *size);
-void		sort_more_three_stack_reverse_b(t_info_list *info, int *size);
+void		sort_less_three_stack_a(t_info_list *info, t_size_list *size_list);
+void		sort_less_three_stack_b(t_info_list *info, t_size_list *size_list);
+void		sort_less_three_stack_reverse_a(t_info_list *info, t_size_list *size_list);
+void		sort_less_three_stack_reverse_b(t_info_list *info, t_size_list *size_list);
+void		sort_more_three_stack_a(t_info_list *info, t_size_list *size_list);
+void		sort_more_three_stack_reverse_a(t_info_list *info, t_size_list *size_list);
+void		sort_more_three_stack_b(t_info_list *info, t_size_list *size_list);
+void		sort_more_three_stack_reverse_b(t_info_list *info, t_size_list *size_list);
 void		sort_by_pivot_stack_reverse_a(t_info_list *info, \
 	t_size_list **size_list, int *i, int pivot);
 void		sort_by_pivot_stack_reverse_b(t_info_list *info, \
 	t_size_list **size_list, int *i, int pivot);
 void		sorting_stack_a(t_info_list *info, t_size_list \
-	*size_list_next, int pivot, int *size);
+	*size_list_next, int pivot, int size);
 void		reverse_sorting_stack_a(t_info_list *info, \
-	t_size_list *size_list_next, int pivot, int *size);
+	t_size_list *size_list_next, int pivot, int size);
 void		sorting_stack_b(t_info_list *info, t_size_list *size_list_next, \
-	int pivot, int *size);
+	int pivot, int size);
 void		reverse_sorting_stack_b(t_info_list *info, \
-	t_size_list *size_list_next, int pivot, int *size);
+	t_size_list *size_list_next, int pivot, int size);
 void		sorting_a_one(t_info_list *info);
 void		sorting_a_two(t_info_list *info);
 void		sorting_b_one(t_info_list *info);
@@ -82,11 +82,11 @@ void		dealloc_stack(t_stack *stack);
 void		sorting_algorithm_for_stack_a_less_three(t_info_list *info);
 void		sorting_algorithm_for_stack_reverse_a_less_three(t_info_list *info);
 void		sorting_algorithm_for_stack_reverse_b_add_1(t_info_list *info, \
-	int *i, int *size);
+	int *i, t_size_list *size_list);
 void		sorting_algorithm_for_stack_reverse_b_add_2(t_info_list *info, \
-	int *i, int *size);
+	int *i, t_size_list *size_list);
 void		sorting_algorithm_for_stack_reverse_b_add_3(t_info_list *info, \
-	int *i, int *size);
+	int *i, t_size_list *size_list);
 
 /*
 **			CHECKER

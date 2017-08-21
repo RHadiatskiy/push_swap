@@ -48,5 +48,7 @@ t_info_list		*initial_info_list(void)
 	info->flag_v = 0;
 	info->flag_c = 0;
 	info->i = 0;
+	info->position_a = 0;
+	info->position_b = 0;
 	return (info);
 }
