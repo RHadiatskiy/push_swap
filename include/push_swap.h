@@ -114,5 +114,7 @@ int			check_command(char *line);
 int			errors_report(int error);
 int			parse_digit(char *str);
 char		**ft_split(char *line);
+void		flags_c_printing(t_info_list *info);
+void		flags_v_printing(t_info_list *info);
 
 #endif

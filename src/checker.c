@@ -63,30 +63,18 @@ int			reading_command(char *line, t_info_list *info)
 		}
 		else
 		{
-			write(1, "\n", 1);
-			choose_command(info, 1, line);
+			flags_v_printing(info);
 			info->i++;
-			print_stack_list(info);
-			ft_printf("%sSize Stack A :%s \t%s%d%s\n", WHITE, RESET, GREEN, \
-				ft_list_size(info->a), RESET);
-			ft_printf("%sSize Stack B :%s \t%s%d%s\n", WHITE, RESET, RED, \
-				ft_list_size(info->b), RESET);
+			choose_command(info, 1, line);
 		}
 	}
 	if (info->flag_v == 1)
+	{
+		flags_v_printing(info);
 		ft_printf("\n%sTOTAL :%s \t%s%jd%s\n", \
 			WHITE, RESET, RED, info->i, RESET);
+	}
 	return (1);
-}
-
-void		flags_c_printing(t_info_list *info)
-{
-	print_stack_list(info);
-	ft_printf("%sSize Stack A :%s \t%s%d%s\n", WHITE, RESET, GREEN, \
-		ft_list_size(info->a), RESET);
-	ft_printf("%sSize Stack B :%s \t%s%d%s\n", WHITE, RESET, RED, \
-		ft_list_size(info->b), RESET);
-	ft_printf("\n%sTOTAL :%s \t%s%jd%s\n", WHITE, RESET, RED, info->i, RESET);
 }
 
 int			main(int argc, char **argv)
