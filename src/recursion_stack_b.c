@@ -42,9 +42,9 @@ void		sort_more_three_stack_reverse_b(t_info_list *info, t_size_list *size_list)
 {
 	int				i;
 
-	i = 0;
-	// dprintf(2, "\n\nPOSITION B : %d\n\n", info->position_b);
-	while (size_list->b_size > ++i)
+	i = 1;
+	// dprintf(2, "\n\nPOSITION B : %d\n\n", size_list->position_b);
+	while (size_list->position_b < --i)
 		ps_rrb(info, 0);
 	if (info->b->next->next->data > info->b->data && \
 		info->b->next->next->data > info->b->next->data)

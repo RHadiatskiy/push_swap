@@ -43,11 +43,16 @@ void		sorting_algorithm_for_stack_a_less_three(t_info_list *info)
 void		sorting_algorithm_for_stack_reverse_b_add_1(t_info_list *info, \
 	int *i, t_size_list *size_list)
 {
-	while (--(*i) > 0)
+	while (++(*i) < 1)
 		ps_rb(info, 0);
+	if (size_list->b_size == (size_list->position_b * -1))
+	{
+		ps_rrb(info, 1);
+		size_list->position_b++;
+	}
 	ps_pa(info, 1);
 	size_list->b_size--;
-	while (size_list->b_size > (*i)++)
+	while (size_list->position_b < --(*i))
 		ps_rrb(info, 1);
 	if (info->b->data < info->b->next->data)
 		ps_sb(info, 1);
@@ -56,9 +61,9 @@ void		sorting_algorithm_for_stack_reverse_b_add_1(t_info_list *info, \
 void		sorting_algorithm_for_stack_reverse_b_add_2(t_info_list *info, \
 	int *i, t_size_list *size_list)
 {
-	while (--(*i) > 0)
+	while (++(*i) < 1)
 		ps_rb(info, 0);
-	while (size_list->b_size > ++(*i))
+	while (size_list->position_b < --(*i))
 		ps_rrb(info, 1);
 	sorting_b_three(info);
 }
@@ -66,9 +71,9 @@ void		sorting_algorithm_for_stack_reverse_b_add_2(t_info_list *info, \
 void		sorting_algorithm_for_stack_reverse_b_add_3(t_info_list *info, \
 	int *i, t_size_list *size_list)
 {
-	while (--(*i) > 0)
+	while (++(*i) < 1)
 		ps_rb(info, 0);
-	while (size_list->b_size > ++(*i))
+	while (size_list->position_b < --(*i))
 	{
 		ps_rrb(info, 1);
 		if (info->b->data < info->b->next->data)

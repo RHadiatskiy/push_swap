@@ -44,16 +44,16 @@ void		check_more_three_stack_a(t_info_list *info, t_size_list *size_list)
 {
 	int				i;
 
-	i = 0;
-	// dprintf(2, "\n\nPOSOTION A : %d\n\n", info->position_a);
-	while (size_list->a_size > ++i)
+	i = 1;
+	// dprintf(2, "\n\nPOSITION A : %d\n\n", size_list->position_a);
+	while (size_list->position_a < --i)
 		ps_rra(info, 0);
 	if (info->a->next->data > info->a->data && \
 		info->a->next->data > info->a->next->next->data)
 	{
-		while (--i > 0)
+		while (++i < 1)
 			ps_ra(info, 0);
-		while (size_list->a_size > ++i)
+		while (size_list->position_a < --i)
 		{
 			ps_rra(info, 1);
 			if (info->a->data > info->a->next->data)
@@ -62,9 +62,9 @@ void		check_more_three_stack_a(t_info_list *info, t_size_list *size_list)
 	}
 	else
 	{
-		while (--i > 0)
+		while (++i < 1)
 			ps_ra(info, 0);
-		while (size_list->a_size > ++i)
+		while (size_list->position_a < --i)
 			ps_rra(info, 1);
 	}
 }
