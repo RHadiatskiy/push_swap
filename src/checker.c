@@ -12,7 +12,7 @@
 
 #include "../include/push_swap.h"
 
-void		pasrs_flags(char **av, int *i, t_info_list *info)
+void		check_parse_flags(char **av, int *i, t_info_list *info)
 {
 	if ((ft_strcmp(av[(*i)], "-c")) == 0)
 	{
@@ -43,7 +43,7 @@ int			parse_and_fill_list(int ac, char **av, int *i, t_info_list *info)
 			(ft_strcmp(av[(*i)], "-v")) == 0 || \
 			(ft_strcmp(av[(*i)], "-cv")) == 0 || \
 			(ft_strcmp(av[(*i)], "-vc")) == 0)
-			pasrs_flags(av, i, info);
+			check_parse_flags(av, i, info);
 		else
 			return (errors_report(1));
 	}
@@ -52,10 +52,14 @@ int			parse_and_fill_list(int ac, char **av, int *i, t_info_list *info)
 
 int			reading_command(char *line, t_info_list *info)
 {
+	if (info->flag_v == 1)
+		flags_v_printing(info);
 	while (get_next_line(0, &line))
 	{
 		if (!check_command(line))
 			return (0);
+		if (!ft_strcmp(line, "\0"))
+			break ;
 		if (info->flag_v == 0)
 		{
 			choose_command(info, 0, line);
@@ -63,17 +67,14 @@ int			reading_command(char *line, t_info_list *info)
 		}
 		else
 		{
-			flags_v_printing(info);
 			info->i++;
 			choose_command(info, 1, line);
+			flags_v_printing(info);
 		}
 	}
 	if (info->flag_v == 1)
-	{
-		flags_v_printing(info);
 		ft_printf("\n%sTOTAL :%s \t%s%jd%s\n", \
-			WHITE, RESET, RED, info->i, RESET);
-	}
+			WHITE, RESET, YELLOW, info->i, RESET);
 	return (1);
 }
 

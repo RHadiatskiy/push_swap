@@ -30,5 +30,6 @@ void		flags_c_printing(t_info_list *info)
 		ft_list_size(info->a), RESET);
 	ft_printf("%sSize Stack B :%s \t%s%d%s\n", WHITE, RESET, RED, \
 		ft_list_size(info->b), RESET);
-	ft_printf("\n%sTOTAL :%s \t%s%jd%s\n", WHITE, RESET, RED, info->i, RESET);
+	ft_printf("\n%sTOTAL :%s \t%s%jd%s\n", WHITE, RESET, YELLOW, info->i, \
+		RESET);
 }

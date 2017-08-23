@@ -21,7 +21,8 @@ void		sort_less_three_stack_a(t_info_list *info, t_size_list *size_list)
 		sort_more_three_stack_a(info, size_list);
 }
 
-void		sort_less_three_stack_reverse_a(t_info_list *info, t_size_list *size_list)
+void		sort_less_three_stack_reverse_a(t_info_list *info, \
+	t_size_list *size_list)
 {
 	if (ft_list_size(info->a) <= 3)
 		sorting_algorithm_for_stack_a_less_three(info);
@@ -77,7 +78,8 @@ void		sort_less_three_stack_b(t_info_list *info, t_size_list *size_list)
 		sort_more_three_stack_b(info, size_list);
 }
 
-void		sort_less_three_stack_reverse_b(t_info_list *info, t_size_list *size_list)
+void		sort_less_three_stack_reverse_b(t_info_list *info, \
+	t_size_list *size_list)
 {
 	if (ft_list_size(info->b) <= 3)
 	{

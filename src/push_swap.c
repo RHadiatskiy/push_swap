@@ -26,7 +26,7 @@ int			main(int argc, char **argv)
 	while (argc > i)
 	{
 		if (!parse_digit(argv[i]))
-			return (errors_report(2));
+			return (errors_report(1));
 		stack_list_added(info->a, ft_atoi(argv[i++]));
 	}
 	size_list->a_size = ft_list_size(info->a);

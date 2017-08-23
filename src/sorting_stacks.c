@@ -66,6 +66,16 @@ void		reverse_sorting_stack_a(t_info_list *info, t_size_list \
 		size_list_next->a_size++;
 }
 
+void		more_than_pivot_addition_func(t_info_list *info, \
+	t_size_list *size_list_next)
+{
+	ps_pa(info, 1);
+	if (size_list_next->b_size != ft_list_size(info->b))
+		ps_rrb(info, 1);
+	size_list_next->a_size++;
+	size_list_next->position_b++;
+}
+
 void		sorting_stack_b(t_info_list *info, t_size_list *size_list_next, \
 	int pivot, int size)
 {
@@ -86,13 +96,7 @@ void		sorting_stack_b(t_info_list *info, t_size_list *size_list_next, \
 		}
 	}
 	if ((info->b->data) > pivot)
-	{
-		ps_pa(info, 1);
-		if (size_list_next->b_size != ft_list_size(info->b))
-			ps_rrb(info, 1);
-		size_list_next->a_size++;
-		size_list_next->position_b++;
-	}
+		more_than_pivot_addition_func(info, size_list_next);
 	else
 		size_list_next->b_size++;
 }

@@ -25,7 +25,8 @@ int			check_command(char *line)
 	command = "sa sb ss pa pb ra rb rr rra rrb rrr";
 	split = ft_split(command);
 	while (split[i])
-		if (ft_strcmp(split[i++], line) == 0)
+		if (ft_strcmp(split[i++], line) == 0 || \
+			ft_strcmp(line, "\n"))
 		{
 			ret = 1;
 			break ;

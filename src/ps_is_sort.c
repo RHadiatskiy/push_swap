@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/checker.h"
 #include "../include/push_swap.h"
 
 int			ps_is_sort(t_info_list *info)
@@ -18,14 +17,14 @@ int			ps_is_sort(t_info_list *info)
 	if (!info && !info->a)
 		return (-1);
 	if (ft_list_size(info->b) != 0)
-		return (write(1, "\033[31mKO\033[0m\n	", 12));
+		return (write(1, "KO\n", 3));
 	while (info->a->next)
 	{
 		if (info->a->data > info->a->next->data)
-			return (write(1, "\033[31mKO\033[0m\n	", 12));
+			return (write(1, "KO\n", 3));
 		info->a = info->a->next;
 	}
-	return (write(1, "\033[32mOK\033[0m\n", 12));
+	return (write(1, "OK\n", 3));
 }
 
 int			swap_is_sort_a(t_stack *stack, int n)
