@@ -91,6 +91,7 @@ void		sorting_algorithm_for_stack_reverse_b_add_2(t_info_list *info, \
 	int *i, t_size_list *size_list);
 void		sorting_algorithm_for_stack_reverse_b_add_3(t_info_list *info, \
 	int *i, t_size_list *size_list);
+int			check_the_same_digit(int ac, char **av);
 
 /*
 **			CHECKER

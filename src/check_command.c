@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/structure.h"
 #include "../include/push_swap.h"
 
 int			check_command(char *line)
@@ -36,4 +35,21 @@ int			check_command(char *line)
 		free(split[i++]);
 	free(split);
 	return (ret);
+}
+
+int			check_the_same_digit(int ac, char **av)
+{
+	int				i;
+	int				j;
+
+	i = 1;
+	while (ac > i)
+	{
+		j = i + 1;
+		while (ac > j)
+			if (ft_atoi(av[i]) == ft_atoi(av[j++]))
+				return (0);
+		i++;
+	}
+	return (1);
 }

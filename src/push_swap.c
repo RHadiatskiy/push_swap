@@ -21,7 +21,7 @@ int			main(int argc, char **argv)
 	i = 1;
 	info = initial_info_list();
 	size_list = initial_size_list();
-	if (!argv[1])
+	if (!argv[1] || !check_the_same_digit(argc, argv))
 		return (errors_report(1));
 	while (argc > i)
 	{

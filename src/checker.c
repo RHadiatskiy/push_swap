@@ -90,6 +90,8 @@ int			main(int argc, char **argv)
 		!ft_strcmp(argv[1], "-v") || !ft_strcmp(argv[1], "-cv") || \
 		!ft_strcmp(argv[1], "-vc")) && !argv[2]))
 		return (errors_report(1));
+	if (!check_the_same_digit(argc, argv))
+		return (errors_report(1));
 	info = initial_info_list();
 	if ((parse_and_fill_list(argc, argv, &i, info)) == 1)
 		return (0);
