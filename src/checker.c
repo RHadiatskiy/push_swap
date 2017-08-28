@@ -12,40 +12,39 @@
 
 #include "../include/push_swap.h"
 
-void		check_parse_flags(char **av, int *i, t_info_list *info)
+void		check_parse_flags(char **av, t_info_list *info)
 {
-	if ((ft_strcmp(av[(*i)], "-c")) == 0)
-	{
+	if ((ft_strcmp(av[1], "-c")) == 0)
 		info->flag_c = 1;
-		(*i)++;
-	}
-	else if ((ft_strcmp(av[(*i)], "-v")) == 0)
-	{
+	else if ((ft_strcmp(av[1], "-v")) == 0)
 		info->flag_v = 1;
-		(*i)++;
-	}
-	else if ((ft_strcmp(av[(*i)], "-cv")) == 0 || \
-		(ft_strcmp(av[(*i)], "-vc")) == 0)
+	else if ((ft_strcmp(av[1], "-cv")) == 0 || \
+		(ft_strcmp(av[1], "-vc")) == 0)
 	{
 		info->flag_c = 1;
 		info->flag_v = 1;
-		(*i)++;
 	}
 }
 
 int			parse_and_fill_list(int ac, char **av, int *i, t_info_list *info)
 {
+	if ((ft_strcmp(av[1], "-c")) == 0 || \
+			(ft_strcmp(av[1], "-v")) == 0 || \
+			(ft_strcmp(av[1], "-cv")) == 0 || \
+			(ft_strcmp(av[1], "-vc")) == 0)
+	{
+			check_parse_flags(av, info);
+			(*i)++;
+	}
 	while (ac > (*i))
 	{
 		if (parse_digit(av[(*i)]))
 			stack_list_added(info->a, ft_atoi(av[(*i)++]));
-		else if ((ft_strcmp(av[(*i)], "-c")) == 0 || \
-			(ft_strcmp(av[(*i)], "-v")) == 0 || \
-			(ft_strcmp(av[(*i)], "-cv")) == 0 || \
-			(ft_strcmp(av[(*i)], "-vc")) == 0)
-			check_parse_flags(av, i, info);
 		else
+		{
+			del(info);
 			return (errors_report(1));
+		}
 	}
 	return (0);
 }
@@ -75,6 +74,7 @@ int			reading_command(char *line, t_info_list *info)
 	if (info->flag_v == 1)
 		ft_printf("\n%sTOTAL :%s \t%s%jd%s\n", \
 			WHITE, RESET, YELLOW, info->i, RESET);
+	free(line);
 	return (1);
 }
 
@@ -96,10 +96,11 @@ int			main(int argc, char **argv)
 	if ((parse_and_fill_list(argc, argv, &i, info)) == 1)
 		return (0);
 	if (!reading_command(line, info))
-		return (errors_report(1));
+		return (0);
 	if (info->flag_c == 1)
 		flags_c_printing(info);
 	ps_is_sort(info);
+	free(line);
 	del(info);
 	return (0);
 }
