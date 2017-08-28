@@ -42,6 +42,9 @@ int			check_the_same_digit(int ac, char **av)
 	int				j;
 
 	i = 1;
+	if ((ft_strcmp(av[1], "-c") == 0) || (ft_strcmp(av[1], "-v") == 0) || \
+		(ft_strcmp(av[1], "-cv") == 0) || (ft_strcmp(av[1], "-vc") == 0))
+		i = 2;
 	while (ac > i)
 	{
 		j = i + 1;

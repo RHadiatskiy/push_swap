@@ -98,7 +98,7 @@ int			check_the_same_digit(int ac, char **av);
 */
 
 int			ft_printf(const char *format, ...);
-int			ft_atoi(const char *str);
+intmax_t	ft_atoi(const char *str);
 int			*ft_arrcpy(int *src, unsigned long n);
 int			ps_is_sort(t_info_list *info);
 void		ps_pa(t_info_list *info, int print);

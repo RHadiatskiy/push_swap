@@ -19,7 +19,7 @@
 typedef struct		s_stack
 {
 	intmax_t			data;
-	intmax_t			n;
+	int					n;
 	struct s_stack		*next;
 }					t_stack;
 

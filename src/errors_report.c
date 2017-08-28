@@ -15,6 +15,6 @@
 int			errors_report(int error)
 {
 	if (error == 1)
-		write(1, "error\n", 6);
+		write(1, "Error\n", 6);
 	return (error);
 }
