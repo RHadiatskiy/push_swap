@@ -14,15 +14,18 @@
 
 int			ps_is_sort(t_info_list *info)
 {
+	t_stack		*stack_a;
+
+	stack_a = info->a;
 	if (!info && !info->a)
 		return (-1);
 	if (ft_list_size(info->b) != 0)
 		return (write(1, "KO\n", 3));
-	while (info->a->next)
+	while (stack_a->next)
 	{
-		if (info->a->data > info->a->next->data)
+		if (stack_a->data > stack_a->next->data)
 			return (write(1, "KO\n", 3));
-		info->a = info->a->next;
+		stack_a = stack_a->next;
 	}
 	return (write(1, "OK\n", 3));
 }

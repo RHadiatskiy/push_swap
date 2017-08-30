@@ -57,10 +57,7 @@ int			reading_command(char *line, t_info_list *info)
 	while (get_next_line(0, &line))
 	{
 		if (!check_command(line))
-		{
-			free(line);
 			return (0);
-		}
 		if (!ft_strcmp(line, "\0"))
 			break ;
 		if (info->flag_v == 0)
@@ -74,11 +71,11 @@ int			reading_command(char *line, t_info_list *info)
 			choose_command(info, 1, line);
 			flags_v_printing(info);
 		}
+		free(line);
 	}
 	if (info->flag_v == 1)
 		ft_printf("\n%sTOTAL :%s \t%s%jd%s\n", \
 			WHITE, RESET, YELLOW, info->i, RESET);
-	free(line);
 	return (1);
 }
 

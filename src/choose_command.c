@@ -37,5 +37,4 @@ void		choose_command(t_info_list *info, int print, char *line)
 		ps_rrb(info, print);
 	else if (ft_strcmp(line, "rrr") == 0)
 		ps_rrr(info, print);
-	free(line);
 }

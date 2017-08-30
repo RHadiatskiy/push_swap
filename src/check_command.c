@@ -33,6 +33,8 @@ int			check_command(char *line)
 	while (split[i])
 		free(split[i++]);
 	free(split);
+	if (ret == 0)
+		free(line);
 	return (ret);
 }
 
