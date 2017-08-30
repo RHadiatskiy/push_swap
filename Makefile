@@ -14,7 +14,7 @@ NAME_PS=push_swap
 NAME_CHCK=checker
 
 CC= gcc -o
-CFLAGS= -Wall -Werror -Wextra -g
+FLAGS= -Wall -Werror -Wextra -g
 LIBFT= libft/libft.a
 PUSH= ./src/push_swap
 CHECK= ./src/checker
@@ -47,10 +47,10 @@ ft_printf:
 	@make -C ./src/ft_printf
 
 push_swap: $(OBJ) $(MAIN_PS)
-	@$(CC) $(NAME_PS) $(CFLAGS) $(MAIN_PS) $(OBJ) $(LIBFT) $(LIBFTPRINTF)
+	@$(CC) $(NAME_PS) $(MAIN_PS) $(OBJ) $(LIBFT) $(LIBFTPRINTF)
 
 checker: $(OBJ) $(MAIN_CHCK)
-	@$(CC) $(NAME_CHCK) $(CFLAGS) $(MAIN_CHCK) $(OBJ) $(LIBFT) $(LIBFTPRINTF)
+	@$(CC) $(NAME_CHCK) $(MAIN_CHCK) $(OBJ) $(LIBFT) $(LIBFTPRINTF)
 
 %.o: %.c
 	gcc $(FLAGS) -c -o $@ $< 

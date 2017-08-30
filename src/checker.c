@@ -57,7 +57,10 @@ int			reading_command(char *line, t_info_list *info)
 	while (get_next_line(0, &line))
 	{
 		if (!check_command(line))
+		{
+			free(line);
 			return (0);
+		}
 		if (!ft_strcmp(line, "\0"))
 			break ;
 		if (info->flag_v == 0)
